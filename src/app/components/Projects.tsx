@@ -1,16 +1,35 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Github, ExternalLink, Smartphone, Brain, Video, PlayCircle } from 'lucide-react';
 
+interface Project {
+  title: string;
+  description: string;
+  longDescription: string;
+  icon: React.ComponentType<{ size: number; className?: string }>;
+  color: string;
+  images: string[];
+  features: string[];
+  technologies: string[];
+  status: string;
+  github: string;
+  demo: string;
+}
+
 const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
     {
       title: 'VIDCAP - Mobile App',
       description: 'A Flutter-based video editing application focused on subtitle overlay and animation, inspired by CapCut\'s functionality.',
       longDescription: 'Developed a comprehensive video editing application using Flutter, allowing users to add subtitle overlays and animated subtitles on videos, similar to CapCut.',
       icon: Video,
       color: 'from-purple-400 to-pink-400',
+      images: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU',
+        'https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png',
+        'https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png'
+      ],
       features: [
         'Built a native iOS library using AVFoundation to export videos with animated subtitles',
         'Created a native Android library using Media3 to render subtitle overlays directly on videos',
@@ -28,7 +47,11 @@ const Projects = () => {
       longDescription: 'Story creation platform powered by Generative AI, developed during my time at Studyo.io, focusing on interactive storytelling experiences.',
       icon: Brain,
       color: 'from-blue-400 to-cyan-400',
-      features: [
+      images: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU',
+        'https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png',
+        'https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png'
+      ],      features: [
         'AI-powered story generation using advanced language models',
         'Personalized storytelling based on user preferences',
         'Interactive reading experience with dynamic content',
@@ -45,6 +68,7 @@ const Projects = () => {
       longDescription: 'Developed as part of team collaboration at Studyo.io, this application provides interactive math learning experiences for young students.',
       icon: PlayCircle,
       color: 'from-green-400 to-emerald-400',
+      images: ['https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Night-Hiking-App.jpg'],
       features: [
         'Gamified learning experiences for elementary students',
         'Interactive math problems and challenges',
@@ -62,6 +86,7 @@ const Projects = () => {
       longDescription: 'Created to streamline animation development across multiple projects, providing a standardized set of animation components.',
       icon: Smartphone,
       color: 'from-orange-400 to-red-400',
+      images: ['https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Task-Manager-Mobile-Concept.jpg'],
       features: [
         'Reusable animation components for Flutter',
         'Consistent animation patterns across projects',
@@ -74,6 +99,85 @@ const Projects = () => {
       demo: '#'
     }
   ];
+
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0); // Reset to first image when opening modal
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+    setCurrentImageIndex(0);
+  };
+
+  const nextImage = () => {
+    if (selectedProject && selectedProject.images.length > 1) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedProject.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject && selectedProject.images.length > 1) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedProject.images.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextImage();
+    } else if (isRightSwipe) {
+      prevImage();
+    }
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!selectedProject) return;
+      
+      if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === 'Escape') {
+        handleCloseModal();
+      }
+    };
+
+    if (selectedProject) {
+      document.addEventListener('keydown', handleKeyPress);
+      return () => document.removeEventListener('keydown', handleKeyPress);
+    }
+  }, [selectedProject, currentImageIndex]);
 
   return (
     <section 
@@ -94,7 +198,16 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <div key={index} className="glass-hover rounded-3xl p-8 group">
+            <div key={index} className="glass-hover rounded-3xl p-8 group cursor-pointer" onClick={() => handleProjectClick(project)}>
+                             {/* Project Image */}
+               <div className="mb-6 relative overflow-hidden rounded-xl">
+                 <img src={project.images[0]} alt={project.title} className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" />
+                 {project.images.length > 1 && (
+                   <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
+                     +{project.images.length - 1} more
+                   </div>
+                 )}
+               </div>
               {/* Project Header */}
               <div className="flex items-center gap-4 mb-6">
                 <div className={`p-3 rounded-xl bg-gradient-to-r ${project.color} bg-opacity-20`}>
@@ -173,6 +286,122 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+                 {/* Project Showcase Modal */}
+         {selectedProject && (
+           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-fadeIn">
+             <div className="bg-gray-900 rounded-3xl p-8 max-w-4xl w-full mx-4 animate-slideUp max-h-[90vh] overflow-y-auto">
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
+                <button onClick={handleCloseModal} className="text-white/70 hover:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+                             {/* Image Slider */}
+               <div className="mb-6">
+                 <div className="relative overflow-hidden rounded-xl bg-gray-800">
+                   {/* Main Image Container */}
+                   <div 
+                     className="relative h-80 w-full"
+                     onTouchStart={handleTouchStart}
+                     onTouchMove={handleTouchMove}
+                     onTouchEnd={handleTouchEnd}
+                   >
+                     <div 
+                       className="flex transition-transform duration-500 ease-in-out h-full"
+                       style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                     >
+                       {selectedProject.images.map((image, index) => (
+                         <div key={index} className="w-full h-full flex-shrink-0">
+                           <img 
+                             src={image} 
+                             alt={`${selectedProject.title} - Image ${index + 1}`} 
+                             className="w-full h-full object-cover"
+                           />
+                         </div>
+                       ))}
+                     </div>
+                     
+                     {/* Navigation Arrows */}
+                     {selectedProject.images.length > 1 && (
+                       <>
+                         <button 
+                           onClick={prevImage}
+                           className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 hover:scale-110"
+                         >
+                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                           </svg>
+                         </button>
+                         <button 
+                           onClick={nextImage}
+                           className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 hover:scale-110"
+                         >
+                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                           </svg>
+                         </button>
+                       </>
+                     )}
+                   </div>
+                   
+                   {/* Dots Indicator */}
+                   {selectedProject.images.length > 1 && (
+                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                       {selectedProject.images.map((_, index) => (
+                         <button
+                           key={index}
+                           onClick={() => goToImage(index)}
+                           className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                             index === currentImageIndex 
+                               ? 'bg-white scale-125' 
+                               : 'bg-white/50 hover:bg-white/75'
+                           }`}
+                         />
+                       ))}
+                     </div>
+                   )}
+                 </div>
+                 
+                 {/* Image Counter */}
+                 {selectedProject.images.length > 1 && (
+                   <div className="text-center mt-2 text-white/60 text-sm">
+                     {currentImageIndex + 1} / {selectedProject.images.length}
+                   </div>
+                 )}
+               </div>
+              <p className="text-white/80 leading-relaxed mb-6">{selectedProject.longDescription}</p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {selectedProject.technologies.map((tech: string) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-1 bg-white/5 border border-white/10 rounded-md text-xs text-white/70"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-4">
+                <a
+                  href={selectedProject.github}
+                  className="flex items-center gap-2 px-4 py-2 glass-hover rounded-lg text-white/80 hover:text-white transition-colors group"
+                >
+                  <Github size={16} />
+                  <span className="text-sm">View Code</span>
+                </a>
+                <a
+                  href={selectedProject.demo}
+                  className="flex items-center gap-2 px-4 py-2 glass-hover rounded-lg text-white/80 hover:text-white transition-colors group"
+                >
+                  <ExternalLink size={16} />
+                  <span className="text-sm">View Demo</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
