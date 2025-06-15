@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Send, CheckCircle } from 'lucide-react';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const Contact = () => {
+  const { data: portfolioData } = usePortfolioData();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,47 +34,47 @@ const Contact = () => {
     }, 3000);
   };
 
-  const contactInfo = [
+  const contactInfo = portfolioData ? [
     {
       icon: Mail,
       label: 'Email',
-      value: 'yanuartrilaksono23@gmail.com',
-      href: 'mailto:yanuartrilaksono23@gmail.com'
+      value: portfolioData.profile.email,
+      href: `mailto:${portfolioData.profile.email}`
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+62 857-3357-1682',
-      href: 'tel:+6285733571682'
+      value: portfolioData.profile.phone,
+      href: `tel:${portfolioData.profile.phone}`
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Nganjuk, Jawa Timur',
+      value: portfolioData.profile.location,
       href: '#'
     }
-  ];
+  ] : [];
 
-  const socialLinks = [
+  const socialLinks = portfolioData ? [
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com/yanuartrilaksono',
+      href: portfolioData.profile.socialLinks.github,
       color: 'hover:text-gray-400'
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com/in/yanuar-tri-laksono',
+      href: portfolioData.profile.socialLinks.linkedin,
       color: 'hover:text-white'
     },
     {
       icon: ExternalLink,
       label: 'Portfolio',
-      href: 'https://yanuar.dev',
+      href: portfolioData.profile.socialLinks.portfolio,
       color: 'hover:text-purple-400'
     }
-  ];
+  ] : [];
 
   const platforms = [
     { name: 'App Store', href: '#' },
@@ -248,7 +250,7 @@ const Contact = () => {
               on your existing project, I'm here to help turn your ideas into reality.
             </p>
             <a
-              href="mailto:yanuartrilaksono23@gmail.com"
+              href={`mailto:${portfolioData?.profile.email || 'yanuartrilaksono23@gmail.com'}`}
               className="inline-flex items-center gap-2 glass-hover px-8 py-4 rounded-full text-white font-medium transition-all duration-300 hover:scale-105 border-2 border-blue-400/50"
             >
               <Mail size={18} />

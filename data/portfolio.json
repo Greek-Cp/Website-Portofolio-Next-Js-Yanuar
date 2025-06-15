@@ -1,0 +1,250 @@
+{
+  "profile": {
+    "name": "Yanuar Tri Laksono",
+    "title": "Android Developer & Software Engineer",
+    "description": "Android Developer & Software Engineer with 5 years of experience building innovative mobile applications using Flutter, Kotlin, and Java",
+    "location": "Nganjuk, Jawa Timur",
+    "education": "Politeknik Negeri Jember",
+    "email": "yanuartrilaksono23@gmail.com",
+    "phone": "+62 857-3357-1682",
+    "profileImage": "/Me.png",
+    "socialLinks": {
+      "github": "https://github.com/yanuartrilaksono",
+      "linkedin": "https://linkedin.com/in/yanuar-tri-laksono",
+      "portfolio": "https://yanuar.dev"
+    }
+  },
+  "about": {
+    "description": [
+      "As a software developer with 5 years of experience in building both native and hybrid mobile applications, I am passionate about creating innovative and user-focused digital solutions.",
+      "I specialize in Android development, with hands-on experience using Flutter, Java, Kotlin, and backend technologies such as Firebase and Laravel. I'm also exploring the exciting world of Generative AI, applying it in real-world mobile applications to enhance interactivity and automation.",
+      "My portfolio includes a wide range of projects, from Bookread AI (a Flutter-based AI storytelling app) to fully automated short video generation tools using AI and text-to-speech technologies."
+    ],
+    "skills": [
+      {
+        "category": "Mobile Development",
+        "items": [
+          "Flutter",
+          "Android (Kotlin/Java)",
+          "iOS (Swift)",
+          "React Native"
+        ]
+      },
+      {
+        "category": "Backend & Database",
+        "items": [
+          "Firebase",
+          "Laravel",
+          "MySQL",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "category": "Programming Languages",
+        "items": [
+          "Dart",
+          "Kotlin",
+          "Java",
+          "Swift",
+          "PHP",
+          "JavaScript"
+        ]
+      },
+      {
+        "category": "AI & Modern Tech",
+        "items": [
+          "Generative AI",
+          "OpenAI API",
+          "Text-to-Speech",
+          "Machine Learning"
+        ]
+      }
+    ],
+    "education": {
+      "degree": "Diploma 4 Teknik Informatika",
+      "institution": "Politeknik Negeri Jember",
+      "period": "2021 - Present",
+      "gpa": "3.83/4.0",
+      "coursework": "Logic and Algorithms, Human-Computer Interaction, Mobile Application Programming with Frameworks"
+    }
+  },
+  "experience": [
+    {
+      "company": "Studyo.io",
+      "position": "Android Developer Full Time",
+      "location": "Remote, Surabaya, Indonesia",
+      "period": "Jan 2023 – Mar 2023",
+      "type": "Full-time Remote",
+      "responsibilities": [
+        "Developing cross-platform mobile applications for Android and iOS using Flutter",
+        "Building the Bookread AI application, a story creation platform powered by Generative AI",
+        "Integrating Firebase Firestore, Authentication, and Cloud Storage to enhance app performance and scalability",
+        "Handling the deployment process to both Google Play Store and Apple App Store",
+        "Creating and maintaining internal libraries to improve code reuse and streamline development across projects",
+        "Developed an Easy Custom Animation library to help the team implement consistent, reusable animations efficiently",
+        "Supporting team collaboration by managing tasks, conducting code reviews, and ensuring clean, maintainable codebases",
+        "Assisting in the development of an educational math game application for elementary school students, focusing on engaging, gamified learning experiences"
+      ],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Android",
+        "iOS",
+        "AI Integration",
+        "Cloud Storage",
+        "Animation"
+      ]
+    },
+    {
+      "company": "Ngawi",
+      "position": "Omaigad",
+      "location": "Florida",
+      "period": "2026-2039",
+      "type": "Full Time",
+      "responsibilities": [
+        "Developing cross-platform mobile applications for Android and iOS using Flutter",
+        "Building the Bookread AI application, a story creation platform powered by Generative AI"
+      ],
+      "technologies": [
+        "Flutter"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "VIDCAP - Mobile App",
+      "description": "A Flutter-based video editing application focused on subtitle overlay and animation, inspired by CapCut's functionality.",
+      "longDescription": "Developed a comprehensive video editing application using Flutter, allowing users to add subtitle overlays and animated subtitles on videos, similar to CapCut.",
+      "icon": "Video",
+      "color": "from-purple-400 to-pink-400",
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU",
+        "https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png",
+        "https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png"
+      ],
+      "features": [
+        "Built a native iOS library using AVFoundation to export videos with animated subtitles",
+        "Created a native Android library using Media3 to render subtitle overlays directly on videos",
+        "Integrated OpenAI's transcription API to automatically convert video audio into subtitles",
+        "Cross-platform compatibility for Android and iOS"
+      ],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "AVFoundation",
+        "Media3",
+        "OpenAI API",
+        "Video Processing"
+      ],
+      "status": "In Development",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "Bookread AI",
+      "description": "A Flutter-based AI storytelling app that creates personalized stories using Generative AI technology.",
+      "longDescription": "Story creation platform powered by Generative AI, developed during my time at Studyo.io, focusing on interactive storytelling experiences.",
+      "icon": "Brain",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU",
+        "https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png",
+        "https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png"
+      ],
+      "features": [
+        "AI-powered story generation using advanced language models",
+        "Personalized storytelling based on user preferences",
+        "Interactive reading experience with dynamic content",
+        "Firebase integration for user data and story storage"
+      ],
+      "technologies": [
+        "Flutter",
+        "Generative AI",
+        "Firebase",
+        "Cloud Functions",
+        "Natural Language Processing"
+      ],
+      "status": "Completed",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "Educational Math Game",
+      "description": "An engaging gamified learning application for elementary school students focusing on mathematics education.",
+      "longDescription": "Developed as part of team collaboration at Studyo.io, this application provides interactive math learning experiences for young students.",
+      "icon": "PlayCircle",
+      "color": "from-green-400 to-emerald-400",
+      "images": [
+        "https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Night-Hiking-App.jpg"
+      ],
+      "features": [
+        "Gamified learning experiences for elementary students",
+        "Interactive math problems and challenges",
+        "Progress tracking and achievement system",
+        "Child-friendly user interface design"
+      ],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Game Development",
+        "UI/UX Design"
+      ],
+      "status": "Completed",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "Easy Custom Animation Library",
+      "description": "Internal library developed to help development teams implement consistent, reusable animations efficiently.",
+      "longDescription": "Created to streamline animation development across multiple projects, providing a standardized set of animation components.",
+      "icon": "Smartphone",
+      "color": "from-orange-400 to-red-400",
+      "images": [
+        "https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Task-Manager-Mobile-Concept.jpg"
+      ],
+      "features": [
+        "Reusable animation components for Flutter",
+        "Consistent animation patterns across projects",
+        "Easy integration and customization",
+        "Performance optimized animations"
+      ],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Animation API",
+        "Package Development"
+      ],
+      "status": "Open Source",
+      "github": "#",
+      "demo": "#"
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Kotlin",
+      "icon": "Smartphone"
+    },
+    {
+      "name": "Java",
+      "icon": "Code2"
+    },
+    {
+      "name": "Flutter/Dart",
+      "icon": "Smartphone"
+    },
+    {
+      "name": "React Native",
+      "icon": "Code2"
+    },
+    {
+      "name": "Firebase",
+      "icon": "Database"
+    },
+    {
+      "name": "Git",
+      "icon": "GitBranch"
+    }
+  ]
+}

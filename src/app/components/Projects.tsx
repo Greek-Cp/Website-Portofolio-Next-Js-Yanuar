@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Github, ExternalLink, Smartphone, Brain, Video, PlayCircle } from 'lucide-react';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 interface Project {
   title: string;
@@ -18,92 +19,56 @@ interface Project {
 }
 
 const Projects = () => {
-  const projects: Project[] = [
-    {
-      title: 'VIDCAP - Mobile App',
-      description: 'A Flutter-based video editing application focused on subtitle overlay and animation, inspired by CapCut\'s functionality.',
-      longDescription: 'Developed a comprehensive video editing application using Flutter, allowing users to add subtitle overlays and animated subtitles on videos, similar to CapCut.',
-      icon: Video,
-      color: 'from-purple-400 to-pink-400',
-      images: [
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU',
-        'https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png',
-        'https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png'
-      ],
-      features: [
-        'Built a native iOS library using AVFoundation to export videos with animated subtitles',
-        'Created a native Android library using Media3 to render subtitle overlays directly on videos',
-        'Integrated OpenAI\'s transcription API to automatically convert video audio into subtitles',
-        'Cross-platform compatibility for Android and iOS'
-      ],
-      technologies: ['Flutter', 'Dart', 'AVFoundation', 'Media3', 'OpenAI API', 'Video Processing'],
-      status: 'In Development',
-      github: '#',
-      demo: '#'
-    },
-    {
-      title: 'Bookread AI',
-      description: 'A Flutter-based AI storytelling app that creates personalized stories using Generative AI technology.',
-      longDescription: 'Story creation platform powered by Generative AI, developed during my time at Studyo.io, focusing on interactive storytelling experiences.',
-      icon: Brain,
-      color: 'from-blue-400 to-cyan-400',
-      images: [
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU',
-        'https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png',
-        'https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png'
-      ],      features: [
-        'AI-powered story generation using advanced language models',
-        'Personalized storytelling based on user preferences',
-        'Interactive reading experience with dynamic content',
-        'Firebase integration for user data and story storage'
-      ],
-      technologies: ['Flutter', 'Generative AI', 'Firebase', 'Cloud Functions', 'Natural Language Processing'],
-      status: 'Completed',
-      github: '#',
-      demo: '#'
-    },
-    {
-      title: 'Educational Math Game',
-      description: 'An engaging gamified learning application for elementary school students focusing on mathematics education.',
-      longDescription: 'Developed as part of team collaboration at Studyo.io, this application provides interactive math learning experiences for young students.',
-      icon: PlayCircle,
-      color: 'from-green-400 to-emerald-400',
-      images: ['https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Night-Hiking-App.jpg'],
-      features: [
-        'Gamified learning experiences for elementary students',
-        'Interactive math problems and challenges',
-        'Progress tracking and achievement system',
-        'Child-friendly user interface design'
-      ],
-      technologies: ['Flutter', 'Dart', 'Firebase', 'Game Development', 'UI/UX Design'],
-      status: 'Completed',
-      github: '#',
-      demo: '#'
-    },
-    {
-      title: 'Easy Custom Animation Library',
-      description: 'Internal library developed to help development teams implement consistent, reusable animations efficiently.',
-      longDescription: 'Created to streamline animation development across multiple projects, providing a standardized set of animation components.',
-      icon: Smartphone,
-      color: 'from-orange-400 to-red-400',
-      images: ['https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Task-Manager-Mobile-Concept.jpg'],
-      features: [
-        'Reusable animation components for Flutter',
-        'Consistent animation patterns across projects',
-        'Easy integration and customization',
-        'Performance optimized animations'
-      ],
-      technologies: ['Flutter', 'Dart', 'Animation API', 'Package Development'],
-      status: 'Open Source',
-      github: '#',
-      demo: '#'
-    }
-  ];
-
+  const { data: portfolioData, loading } = usePortfolioData();
+  
+  // Move all hooks to the top, before any conditional returns
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const iconMap: { [key: string]: React.ComponentType<{ size: number; className?: string }> } = {
+    Video,
+    Brain,
+    PlayCircle,
+    Smartphone
+  };
+
+  // Keyboard navigation useEffect
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!selectedProject) return;
+      
+      if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
+      } else if (e.key === 'Escape') {
+        handleCloseModal();
+      }
+    };
+
+    if (selectedProject) {
+      document.addEventListener('keydown', handleKeyPress);
+      return () => document.removeEventListener('keydown', handleKeyPress);
+    }
+  }, [selectedProject, currentImageIndex]);
+
+  // Now we can do conditional rendering after all hooks are declared
+  if (loading || !portfolioData) {
+    return (
+      <section className="py-20 px-4 relative">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="text-white">Loading projects...</div>
+        </div>
+      </section>
+    );
+  }
+
+  const projects: Project[] = portfolioData.projects.map(project => ({
+    ...project,
+    icon: iconMap[project.icon] || Smartphone
+  }));
 
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
@@ -158,26 +123,6 @@ const Projects = () => {
       prevImage();
     }
   };
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (!selectedProject) return;
-      
-      if (e.key === 'ArrowLeft') {
-        prevImage();
-      } else if (e.key === 'ArrowRight') {
-        nextImage();
-      } else if (e.key === 'Escape') {
-        handleCloseModal();
-      }
-    };
-
-    if (selectedProject) {
-      document.addEventListener('keydown', handleKeyPress);
-      return () => document.removeEventListener('keydown', handleKeyPress);
-    }
-  }, [selectedProject, currentImageIndex]);
 
   return (
     <section 

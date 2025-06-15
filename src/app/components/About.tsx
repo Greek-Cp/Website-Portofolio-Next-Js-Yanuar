@@ -2,30 +2,34 @@
 
 import React from 'react';
 import { Code, Smartphone, Database, Brain, MapPin, GraduationCap } from 'lucide-react';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const About = () => {
-  const skills = [
-    {
-      category: 'Mobile Development',
-      icon: Smartphone,
-      items: ['Flutter', 'Android (Kotlin/Java)', 'iOS (Swift)', 'React Native']
-    },
-    {
-      category: 'Backend & Database',
-      icon: Database,
-      items: ['Firebase', 'Laravel', 'MySQL', 'PostgreSQL']
-    },
-    {
-      category: 'Programming Languages',
-      icon: Code,
-      items: ['Dart', 'Kotlin', 'Java', 'Swift', 'PHP', 'JavaScript']
-    },
-    {
-      category: 'AI & Modern Tech',
-      icon: Brain,
-      items: ['Generative AI', 'OpenAI API', 'Text-to-Speech', 'Machine Learning']
-    }
-  ];
+  const { data: portfolioData, loading } = usePortfolioData();
+
+  const iconMap: { [key: string]: React.ComponentType<{ size: number; className?: string }> } = {
+    Smartphone,
+    Database,
+    Code,
+    Brain
+  };
+
+  if (loading || !portfolioData) {
+    return (
+      <section className="py-20 px-4 relative">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="text-white">Loading...</div>
+        </div>
+      </section>
+    );
+  }
+
+  const skills = portfolioData.about.skills.map(skill => ({
+    ...skill,
+    icon: iconMap[skill.category.includes('Mobile') ? 'Smartphone' : 
+                   skill.category.includes('Backend') ? 'Database' :
+                   skill.category.includes('Programming') ? 'Code' : 'Brain'] || Code
+  }));
 
   return (
     <section 
@@ -49,34 +53,21 @@ const About = () => {
             <h3 className="text-2xl font-bold text-white mb-6">Profile</h3>
             
             <div className="space-y-6">
-              <p className="text-white/80 leading-relaxed">
-                As a software developer with 5 years of experience in building both native and 
-                hybrid mobile applications, I am passionate about creating innovative and 
-                user-focused digital solutions.
-              </p>
-              
-              <p className="text-white/80 leading-relaxed">
-                I specialize in Android development, with hands-on experience using Flutter, 
-                Java, Kotlin, and backend technologies such as Firebase and Laravel. I'm also 
-                exploring the exciting world of Generative AI, applying it in real-world mobile 
-                applications to enhance interactivity and automation.
-              </p>
-
-              <p className="text-white/80 leading-relaxed">
-                My portfolio includes a wide range of projects, from Bookread AI (a Flutter-based 
-                AI storytelling app) to fully automated short video generation tools using AI and 
-                text-to-speech technologies.
-              </p>
+              {portfolioData.about.description.map((paragraph, index) => (
+                <p key={index} className="text-white/80 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
 
               {/* Personal Info */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                 <div className="flex items-center gap-3">
                   <MapPin size={20} className="text-white" />
-                  <span className="text-white/80">Nganjuk, Jawa Timur</span>
+                  <span className="text-white/80">{portfolioData.profile.location}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <GraduationCap size={20} className="text-white" />
-                  <span className="text-white/80">Politeknik Negeri Jember</span>
+                  <span className="text-white/80">{portfolioData.profile.education}</span>
                 </div>
               </div>
             </div>
@@ -118,13 +109,12 @@ const About = () => {
             <div className="space-y-4">
               <div>
                 <h4 className="text-xl font-semibold text-white">
-                  Diploma 4 Teknik Informatika
+                  {portfolioData.about.education.degree}
                 </h4>
-                <p className="text-white font-medium">Politeknik Negeri Jember</p>
-                <p className="text-white/70">2021 - Present | Current GPA: 3.83/4.0</p>
+                <p className="text-white font-medium">{portfolioData.about.education.institution}</p>
+                <p className="text-white/70">{portfolioData.about.education.period} | Current GPA: {portfolioData.about.education.gpa}</p>
                 <p className="text-white/60 mt-2">
-                  Relevant Coursework: Logic and Algorithms, Human-Computer Interaction, 
-                  Mobile Application Programming with Frameworks
+                  Relevant Coursework: {portfolioData.about.education.coursework}
                 </p>
               </div>
             </div>

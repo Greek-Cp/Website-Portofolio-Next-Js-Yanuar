@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { Heart, Github, Linkedin, Mail, Phone } from 'lucide-react';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const Footer = () => {
+  const { data: portfolioData } = usePortfolioData();
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
@@ -14,12 +16,12 @@ const Footer = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/yanuartrilaksono', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/yanuar-tri-laksono', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:yanuartrilaksono23@gmail.com', label: 'Email' },
-    { icon: Phone, href: 'tel:+6285733571682', label: 'Phone' }
-  ];
+  const socialLinks = portfolioData ? [
+    { icon: Github, href: portfolioData.profile.socialLinks.github, label: 'GitHub' },
+    { icon: Linkedin, href: portfolioData.profile.socialLinks.linkedin, label: 'LinkedIn' },
+    { icon: Mail, href: `mailto:${portfolioData.profile.email}`, label: 'Email' },
+    { icon: Phone, href: `tel:${portfolioData.profile.phone}`, label: 'Phone' }
+  ] : [];
 
   return (
     <footer 
@@ -30,11 +32,10 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="text-2xl font-bold text-white">
-              <span className="text-white">Y</span>anuar
+              <span className="text-white">{portfolioData?.profile.name.charAt(0) || 'Y'}</span>{portfolioData?.profile.name.slice(1).split(' ')[0] || 'anuar'}
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-sm">
-              Android Developer & Software Engineer passionate about creating innovative 
-              mobile solutions with 5+ years of experience.
+              {portfolioData?.profile.description || 'Android Developer & Software Engineer passionate about creating innovative mobile solutions with 5+ years of experience.'}
             </p>
           </div>
 
@@ -60,19 +61,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Get in Touch</h3>
             <div className="space-y-2">
               <a
-                href="mailto:yanuartrilaksono23@gmail.com"
+                href={`mailto:${portfolioData?.profile.email || 'yanuartrilaksono23@gmail.com'}`}
                 className="text-white/70 hover:text-white transition-colors text-sm block"
               >
-                yanuartrilaksono23@gmail.com
+                {portfolioData?.profile.email || 'yanuartrilaksono23@gmail.com'}
               </a>
               <a
-                href="tel:+6285733571682"
+                href={`tel:${portfolioData?.profile.phone || '+6285733571682'}`}
                 className="text-white/70 hover:text-white transition-colors text-sm block"
               >
-                +62 857-3357-1682
+                {portfolioData?.profile.phone || '+62 857-3357-1682'}
               </a>
               <p className="text-white/70 text-sm">
-                Nganjuk, Jawa Timur, Indonesia
+                {portfolioData?.profile.location || 'Nganjuk, Jawa Timur'}, Indonesia
               </p>
             </div>
           </div>
@@ -96,7 +97,7 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-2 text-white/60 text-sm">
-            <span>© {currentYear} Yanuar Tri Laksono. Made with</span>
+            <span>© {currentYear} {portfolioData?.profile.name || 'Yanuar Tri Laksono'}. Made with</span>
             <Heart size={16} className="text-red-400" />
             <span>using Next.js</span>
           </div>

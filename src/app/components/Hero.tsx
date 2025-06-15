@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowDown, Download, ExternalLink, Smartphone, Code2, Database, GitBranch } from 'lucide-react';
 import Image from 'next/image';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const Hero = () => {
+  const { data: portfolioData, loading } = usePortfolioData();
   const [particles, setParticles] = useState<Array<{id: number, left: string, top: string, delay: string, duration: string}>>([]);
 
   useEffect(() => {
@@ -19,14 +21,20 @@ const Hero = () => {
     setParticles(generatedParticles);
   }, []);
 
-  const technologies = [
-    { name: 'Kotlin', icon: Smartphone },
-    { name: 'Java', icon: Code2 },
-    { name: 'Flutter/Dart', icon: Smartphone },
-    { name: 'React Native', icon: Code2 },
-    { name: 'Firebase', icon: Database },
-    { name: 'Git', icon: GitBranch }
-  ];
+  const iconMap: { [key: string]: React.ComponentType<{ size: number }> } = {
+    Smartphone,
+    Code2,
+    Database,
+    GitBranch
+  };
+
+  if (loading || !portfolioData) {
+    return (
+      <section className="min-h-screen flex items-center justify-center pt-20 px-4 relative">
+        <div className="text-white">Loading...</div>
+      </section>
+    );
+  }
 
   return (
     <section 
@@ -73,12 +81,11 @@ const Hero = () => {
           <div className="lg:col-span-3 text-left">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight">
               <span className="block text-white/90 text-xl md:text-2xl lg:text-3xl mb-1">Hi, I'm</span>
-              <span className="text-white">Yanuar Tri Laksono</span>
+              <span className="text-white">{portfolioData.profile.name}</span>
             </h1>
             
             <p className="text-base md:text-lg lg:text-xl text-white/80 mb-6 max-w-2xl leading-relaxed">
-              Android Developer & Software Engineer with 5 years of experience building 
-              innovative mobile applications using Flutter, Kotlin, and Java
+              {portfolioData.profile.description}
             </p>
 
             {/* CTA Buttons */}
@@ -92,7 +99,7 @@ const Hero = () => {
               </a>
               
               <a
-                href="mailto:yanuartrilaksono23@gmail.com"
+                href={`mailto:${portfolioData.profile.email}`}
                 className="backdrop-blur-sm bg-blue-600/20 hover:bg-blue-600/30 px-6 py-3 rounded-full text-white text-sm font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2 group border border-blue-400/30 hover:border-blue-400/50"
               >
                 <Download size={16} className="group-hover:translate-y-1 transition-transform" />
@@ -106,15 +113,18 @@ const Hero = () => {
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-white/90 text-center mb-4">Technology Stack</h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {technologies.map((tech) => (
-              <span
-                key={tech.name}
-                className="backdrop-blur-sm bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full text-sm text-white/90 border border-white/20 transition-all duration-300 hover:border-white/30 flex items-center gap-2"
-              >
-                <tech.icon size={16} />
-                {tech.name}
-              </span>
-            ))}
+            {portfolioData.technologies.map((tech: any) => {
+              const IconComponent = iconMap[tech.icon] || Smartphone;
+              return (
+                <span
+                  key={tech.name}
+                  className="backdrop-blur-sm bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full text-sm text-white/90 border border-white/20 transition-all duration-300 hover:border-white/30 flex items-center gap-2"
+                >
+                  <IconComponent size={16} />
+                  {tech.name}
+                </span>
+              );
+            })}
           </div>
         </div>
 

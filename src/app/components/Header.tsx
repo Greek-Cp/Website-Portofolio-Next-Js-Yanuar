@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail, Phone } from 'lucide-react';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const Header = () => {
+  const { data: portfolioData } = usePortfolioData();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -24,12 +26,12 @@ const Header = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com/yanuartrilaksono', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/yanuar-tri-laksono', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:yanuartrilaksono23@gmail.com', label: 'Email' },
-    { icon: Phone, href: 'tel:+6285733571682', label: 'Phone' },
-  ];
+  const socialLinks = portfolioData ? [
+    { icon: Github, href: portfolioData.profile.socialLinks.github, label: 'GitHub' },
+    { icon: Linkedin, href: portfolioData.profile.socialLinks.linkedin, label: 'LinkedIn' },
+    { icon: Mail, href: `mailto:${portfolioData.profile.email}`, label: 'Email' },
+    { icon: Phone, href: `tel:${portfolioData.profile.phone}`, label: 'Phone' },
+  ] : [];
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -44,7 +46,7 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="text-2xl font-bold text-white">
-              <span className="text-white">Y</span>anuar
+              <span className="text-white">{portfolioData?.profile.name.charAt(0) || 'Y'}</span>{portfolioData?.profile.name.slice(1).split(' ')[0] || 'anuar'}
             </div>
 
             {/* Desktop Navigation */}

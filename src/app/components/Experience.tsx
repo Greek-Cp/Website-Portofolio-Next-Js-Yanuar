@@ -2,27 +2,22 @@
 
 import React from 'react';
 import { Calendar, MapPin, Building, CheckCircle } from 'lucide-react';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const Experience = () => {
-  const experiences = [
-    {
-      company: 'Studyo.io',
-      position: 'Android Developer Full Time',
-      location: 'Remote, Surabaya, Indonesia',
-      period: 'Jan 2023 – Mar 2023',
-      type: 'Full-time Remote',
-      responsibilities: [
-        'Developing cross-platform mobile applications for Android and iOS using Flutter',
-        'Building the Bookread AI application, a story creation platform powered by Generative AI',
-        'Integrating Firebase Firestore, Authentication, and Cloud Storage to enhance app performance and scalability',
-        'Handling the deployment process to both Google Play Store and Apple App Store',
-        'Creating and maintaining internal libraries to improve code reuse and streamline development across projects',
-        'Developed an Easy Custom Animation library to help the team implement consistent, reusable animations efficiently',
-        'Supporting team collaboration by managing tasks, conducting code reviews, and ensuring clean, maintainable codebases',
-        'Assisting in the development of an educational math game application for elementary school students, focusing on engaging, gamified learning experiences'
-      ]
-    }
-  ];
+  const { data: portfolioData, loading } = usePortfolioData();
+
+  if (loading || !portfolioData) {
+    return (
+      <section className="py-20 px-4 relative">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="text-white">Loading experience...</div>
+        </div>
+      </section>
+    );
+  }
+
+  const experiences = portfolioData.experience;
 
   return (
     <section 
@@ -94,7 +89,7 @@ const Experience = () => {
               <div className="mt-8 pt-6 border-t border-white/10">
                 <h5 className="text-sm font-semibold text-white/70 mb-3">Technologies Used:</h5>
                 <div className="flex flex-wrap gap-2">
-                  {['Flutter', 'Dart', 'Firebase', 'Android', 'iOS', 'AI Integration', 'Cloud Storage', 'Animation'].map((tech) => (
+                  {exp.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/70 hover:bg-white/10 transition-colors"
