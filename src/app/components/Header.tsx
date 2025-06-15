@@ -35,7 +35,9 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'py-2' : 'py-4'
     }`}>
-      <nav className={`mx-4 md:mx-8 rounded-full transition-all duration-300 ${
+      <nav className={`mx-4 md:mx-8 transition-all duration-300 ${
+        isMenuOpen ? 'rounded-2xl' : 'rounded-full'
+      } ${
         isScrolled ? 'glass' : 'glass-hover'
       }`}>
         <div className="px-6 py-4">
@@ -118,4 +120,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;
