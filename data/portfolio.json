@@ -122,6 +122,29 @@
       "technologies": [
         "Flutter"
       ]
+    },
+    {
+      "company": "Apple Developer Academy @ UC",
+      "position": "iOS Developer",
+      "location": "Surabaya, East Java, Indonesia",
+      "period": "Apr 2025 - May 2025",
+      "type": "Internship",
+      "responsibilities": [
+        "Transforming UI/UX designs into functional views using SwiftUI",
+        "Setting up the initial project architecture and developing core components for a Student Inventory Management application",
+        "Implementing full CRUD functionality for inventory data",
+        "Assisting team members by debugging issues and providing technical support during development",
+        "Configuring app permissions using the Info.plist file",
+        "Performing real device testing to ensure smooth performance on iOS hardware",
+        "Collaborating within a cross-functional team and contributing to agile development cycles"
+      ],
+      "technologies": [
+        "SwiftUI",
+        "iOS Development",
+        "Info.plist",
+        "CRUD operations",
+        "Agile Development"
+      ]
     }
   ],
   "projects": [
@@ -275,6 +298,28 @@
         "XML"
       ],
       "status": "Completed",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "DESA SIDOKARE- Mobile App",
+      "description": "A mobile application developed to assist the staff of Desa Sidokare in providing services to residents.",
+      "longDescription": "The 'Desa Sidokare' application was developed using Flutter with the objective of facilitating better service delivery to the residents of Desa Sidokare. The application aims to streamline the access of residents to various services offered by the village staff, ensuring that residents can easily find and utilize the services they need. Additionally, the design of the application was meticulously implemented to guarantee responsiveness and compatibility across all types of mobile devices. This ensures that all users, regardless of their device, have an optimal experience when using the application.\n\nThe development process involved careful planning and execution, focusing on user needs and the types of services that the village provides. By leveraging modern technology and user-friendly design, the application enhances the interaction between residents and village staff. Furthermore, this initiative is part of a broader effort to digitize public services and make them more accessible to the community.\n\nIn addition to improving service access, the application serves as a platform for residents to engage with their local government, providing feedback and suggestions for further improvements. The project was developed in collaboration with Politeknik Negeri Jember, ensuring that technical expertise and academic support were integrated into the development process. Overall, the 'Desa Sidokare' application represents a significant step towards modernizing local governance and enhancing community engagement.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [],
+      "features": [
+        "Service Access",
+        "User Feedback",
+        "Responsive Design"
+      ],
+      "technologies": [
+        "Flutter",
+        "Laravel",
+        "MySQL",
+        "PHP"
+      ],
+      "status": "In Development",
       "github": "#",
       "demo": "#"
     }

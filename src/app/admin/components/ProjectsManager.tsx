@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { Plus, Trash2, Brain, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Plus, Trash2, Brain, X, ChevronDown, ChevronRight } from 'lucide-react';
 import ImageUploader from './ImageUploader';
 import AISummarizeHelper from './AISummarizeHelper';
 
@@ -27,6 +27,18 @@ interface ProjectsManagerProps {
 }
 
 const ProjectsManager: React.FC<ProjectsManagerProps> = ({ projects, onAdd, onUpdate, onDelete }) => {
+  const [expandedProjects, setExpandedProjects] = useState<Set<number>>(new Set());
+
+  const toggleProject = (index: number) => {
+    const newExpanded = new Set(expandedProjects);
+    if (newExpanded.has(index)) {
+      newExpanded.delete(index);
+    } else {
+      newExpanded.add(index);
+    }
+    setExpandedProjects(newExpanded);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -40,119 +52,66 @@ const ProjectsManager: React.FC<ProjectsManagerProps> = ({ projects, onAdd, onUp
         </button>
       </div>
       
-      <div className="space-y-6">
-        {projects.map((project, index) => (
-          <div key={index} className="glass-hover rounded-xl p-6 border border-white/10">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-white">Project {index + 1}</h3>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    const autoFillModal = document.getElementById(`auto-fill-modal-${index}`);
-                    if (autoFillModal) autoFillModal.classList.remove('hidden');
-                  }}
-                  className="flex items-center gap-1 px-3 py-1 text-xs glass-hover rounded-lg text-white border border-green-400/50"
-                >
-                  <Brain size={12} />
-                  AI Auto-fill
-                </button>
-                <button
-                  onClick={() => onDelete(index)}
-                  className="text-red-400 hover:text-red-300 p-2"
-                >
-                  <Trash2 size={16} />
-                </button>
-              </div>
-              
-              {/* AI Auto-fill Modal */}
-              <div id={`auto-fill-modal-${index}`} className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 hidden">
-                <div className="glass rounded-xl border border-white/20 p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xl font-semibold text-white">AI Project Auto-fill</h3>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const autoFillModal = document.getElementById(`auto-fill-modal-${index}`);
-                        if (autoFillModal) autoFillModal.classList.add('hidden');
-                      }}
-                      className="text-white/70 hover:text-white p-1"
-                    >
-                      <X size={20} />
-                    </button>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <p className="text-white/70 text-sm">
-                      Masukkan konteks project Anda dan AI akan mengisi semua field project secara otomatis dalam format JSON yang terstruktur.
+      <div className="space-y-4">
+        {projects.map((project, index) => {
+          const isExpanded = expandedProjects.has(index);
+          return (
+            <div key={index} className="glass-hover rounded-xl border border-white/10 overflow-hidden">
+              {/* Expandable Header */}
+              <div 
+                className="flex items-center justify-between p-4 cursor-pointer hover:bg-white/5 transition-colors"
+                onClick={() => toggleProject(index)}
+              >
+                <div className="flex items-center gap-3">
+                  {isExpanded ? (
+                    <ChevronDown size={20} className="text-white/70" />
+                  ) : (
+                    <ChevronRight size={20} className="text-white/70" />
+                  )}
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {project.title || `Project ${index + 1}`}
+                    </h3>
+                    <p className="text-sm text-white/60 truncate max-w-md">
+                      {project.description || 'No description'}
                     </p>
-                    
-                    <AISummarizeHelper
-                      mode="project-autofill"
-                      type="project"
-                      onProjectDataGenerated={(projectData) => {
-                        console.log('ProjectsManager received project data:', projectData);
-                        console.log('Current project before update:', project);
-                        console.log('Project index:', index);
-                        
-                        // Create updated project object with all fields at once
-                        const updatedFields: any = {};
-                        
-                        if (projectData.title) {
-                          console.log('Adding title to update:', projectData.title);
-                          updatedFields.title = projectData.title;
-                        }
-                        if (projectData.description) {
-                          console.log('Adding description to update:', projectData.description);
-                          updatedFields.description = projectData.description;
-                        }
-                        if (projectData.longDescription) {
-                          console.log('Adding longDescription to update:', projectData.longDescription);
-                          updatedFields.longDescription = projectData.longDescription;
-                        }
-                        if (projectData.features) {
-                          console.log('Adding features to update:', projectData.features);
-                          updatedFields.features = projectData.features;
-                        }
-                        if (projectData.technologies) {
-                          console.log('Adding technologies to update:', projectData.technologies);
-                          updatedFields.technologies = projectData.technologies;
-                        }
-                        if (projectData.status) {
-                          console.log('Adding status to update:', projectData.status);
-                          updatedFields.status = projectData.status;
-                        }
-                        if (projectData.github) {
-                          console.log('Adding github to update:', projectData.github);
-                          updatedFields.github = projectData.github;
-                        }
-                        if (projectData.demo) {
-                          console.log('Adding demo to update:', projectData.demo);
-                          updatedFields.demo = projectData.demo;
-                        }
-                        
-                        console.log('Batch updating all fields:', updatedFields);
-                        
-                        // Update all fields in a batch using a special batch update
-                        onUpdate(index, 'batch_update', updatedFields);
-                        
-                        console.log('Batch update completed, closing modal...');
-                        
-                        // Add a small delay to ensure state updates are processed
-                        setTimeout(() => {
-                          // Close modal
-                          const autoFillModal = document.getElementById(`auto-fill-modal-${index}`);
-                          if (autoFillModal) autoFillModal.classList.add('hidden');
-                          
-                          alert('Project data berhasil di-generate dan diisi otomatis!');
-                        }, 200);
-                      }}
-                      placeholder="Masukkan konteks project Anda..."
-                    />
                   </div>
                 </div>
+                <div className="flex items-center gap-2">
+                  <span className={`px-2 py-1 text-xs rounded-full ${
+                    project.status === 'Completed' ? 'bg-green-500/20 text-green-400' :
+                    project.status === 'In Development' ? 'bg-yellow-500/20 text-yellow-400' :
+                    'bg-blue-500/20 text-blue-400'
+                  }`}>
+                    {project.status || 'In Development'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const autoFillModal = document.getElementById(`auto-fill-modal-${index}`);
+                      if (autoFillModal) autoFillModal.classList.remove('hidden');
+                    }}
+                    className="flex items-center gap-1 px-3 py-1 text-xs glass-hover rounded-lg text-white border border-green-400/50 hover:border-green-400"
+                  >
+                    <Brain size={12} />
+                    AI Auto-fill
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onDelete(index);
+                    }}
+                    className="text-red-400 hover:text-red-300 p-2 rounded-lg hover:bg-red-500/10"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
               </div>
-            </div>
+
+              {/* Expandable Content */}
+              {isExpanded && (
+                <div className="p-6 pt-0 border-t border-white/10">
             
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <div>
@@ -332,9 +291,105 @@ const ProjectsManager: React.FC<ProjectsManagerProps> = ({ projects, onAdd, onUp
                 />
               </div>
             </div>
-          </div>
-        ))}
+                </div>
+              )}
+              
+            </div>
+          );
+        })}
       </div>
+      
+      {/* AI Auto-fill Modals - Outside all card containers */}
+      {projects.map((project, index) => (
+        <div key={`modal-${index}`} id={`auto-fill-modal-${index}`} className="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-white/10 p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Brain className="text-purple-400" size={24} />
+                AI Auto-fill Project
+              </h3>
+              <button
+                onClick={() => {
+                  const modal = document.getElementById(`auto-fill-modal-${index}`);
+                  if (modal) modal.classList.add('hidden');
+                }}
+                className="text-white/70 hover:text-white p-2"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="mb-4">
+              <p className="text-white/70 text-sm">
+                Masukkan konteks project Anda dan AI akan mengisi semua field project secara otomatis dalam format JSON yang terstruktur.
+              </p>
+            </div>
+            
+            <AISummarizeHelper
+              mode="project-autofill"
+              type="project"
+              onProjectDataGenerated={(projectData) => {
+                console.log('ProjectsManager received project data:', projectData);
+                console.log('Current project before update:', project);
+                console.log('Project index:', index);
+                
+                // Create updated project object with all fields at once
+                const updatedFields: any = {};
+                
+                if (projectData.title) {
+                  console.log('Adding title to update:', projectData.title);
+                  updatedFields.title = projectData.title;
+                }
+                if (projectData.description) {
+                  console.log('Adding description to update:', projectData.description);
+                  updatedFields.description = projectData.description;
+                }
+                if (projectData.longDescription) {
+                  console.log('Adding longDescription to update:', projectData.longDescription);
+                  updatedFields.longDescription = projectData.longDescription;
+                }
+                if (projectData.features) {
+                  console.log('Adding features to update:', projectData.features);
+                  updatedFields.features = projectData.features;
+                }
+                if (projectData.technologies) {
+                  console.log('Adding technologies to update:', projectData.technologies);
+                  updatedFields.technologies = projectData.technologies;
+                }
+                if (projectData.status) {
+                  console.log('Adding status to update:', projectData.status);
+                  updatedFields.status = projectData.status;
+                }
+                if (projectData.github) {
+                  console.log('Adding github to update:', projectData.github);
+                  updatedFields.github = projectData.github;
+                }
+                if (projectData.demo) {
+                  console.log('Adding demo to update:', projectData.demo);
+                  updatedFields.demo = projectData.demo;
+                }
+                
+                console.log('Batch updating all fields:', updatedFields);
+                
+                // Update all fields in a batch using a special batch update
+                onUpdate(index, 'batch_update', updatedFields);
+                
+                console.log('Batch update completed, closing modal...');
+                
+                // Add a small delay to ensure state updates are processed
+                setTimeout(() => {
+                  // Close modal
+                  const autoFillModal = document.getElementById(`auto-fill-modal-${index}`);
+                  if (autoFillModal) autoFillModal.classList.add('hidden');
+                  
+                  alert('Project data berhasil di-generate dan diisi otomatis!');
+                }, 200);
+              }}
+              placeholder="Masukkan konteks project Anda..."
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

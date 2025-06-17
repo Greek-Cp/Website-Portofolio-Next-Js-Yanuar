@@ -10,7 +10,8 @@ interface AISummarizeHelperProps {
   placeholder?: string;
   onSummaryGenerated?: (summary: string) => void;
   onProjectDataGenerated?: (projectData: any) => void;
-  mode?: 'summary' | 'project-autofill';
+  onExperienceDataGenerated?: (experienceData: any) => void;
+  mode?: 'summary' | 'project-autofill' | 'experience-autofill';
 }
 
 const AISummarizeHelper: React.FC<AISummarizeHelperProps> = ({
@@ -18,6 +19,7 @@ const AISummarizeHelper: React.FC<AISummarizeHelperProps> = ({
   type = 'general',
   onSummaryGenerated,
   onProjectDataGenerated,
+  onExperienceDataGenerated,
   mode = 'summary',
   placeholder = 'Enter content to summarize...'
 }) => {
@@ -55,6 +57,25 @@ Tolong ekstrak dan format data project dalam format JSON yang valid dengan struk
 
 IMPORTANT: Response harus HANYA berupa JSON yang valid, tanpa teks penjelasan, tanpa markdown formatting, tanpa backticks. Mulai langsung dengan { dan akhiri dengan }.`;
     }
+    
+    if (mode === 'experience-autofill') {
+      prompt = `Berdasarkan informasi berikut tentang pengalaman kerja:
+
+${inputContent}
+
+Tolong ekstrak dan format data pengalaman kerja dalam format JSON yang valid dengan struktur berikut:
+{
+  "company": "nama perusahaan",
+  "position": "jabatan/posisi",
+  "location": "lokasi kerja (kota, negara)",
+  "period": "periode kerja (contoh: Jan 2020 - Dec 2022 atau Jan 2020 - Present)",
+  "type": "tipe pekerjaan (Full-time Remote, Part-time, Contract, Internship, dll)",
+  "responsibilities": ["tanggung jawab 1", "tanggung jawab 2", "tanggung jawab 3"],
+  "technologies": ["teknologi 1", "teknologi 2", "teknologi 3"]
+}
+
+IMPORTANT: Response harus HANYA berupa JSON yang valid, tanpa teks penjelasan, tanpa markdown formatting, tanpa backticks. Mulai langsung dengan { dan akhiri dengan }. Pastikan responsibilities dan technologies berupa array string.`;
+    }
 
     const result = await summarize({
       content: inputContent,
@@ -66,7 +87,7 @@ IMPORTANT: Response harus HANYA berupa JSON yang valid, tanpa teks penjelasan, t
       console.log('AI Response:', result);
       setSummary(result);
       
-      if (mode === 'project-autofill') {
+      if (mode === 'project-autofill' || mode === 'experience-autofill') {
         try {
           // Clean the result - remove any markdown formatting or extra text
           let cleanResult = result.trim();
@@ -90,22 +111,34 @@ IMPORTANT: Response harus HANYA berupa JSON yang valid, tanpa teks penjelasan, t
           
           // Try to parse as JSON
           console.log('Attempting to parse JSON...');
-          const projectData = JSON.parse(cleanResult);
-          console.log('Parsed project data:', projectData);
+          const parsedData = JSON.parse(cleanResult);
+          console.log('Parsed data:', parsedData);
           
-          // Validate required fields
-          if (projectData.title && projectData.description) {
-            if (onProjectDataGenerated) {
-              console.log('Calling onProjectDataGenerated with:', projectData);
-              onProjectDataGenerated(projectData);
+          // Validate required fields based on mode
+          let isValid = false;
+          if (mode === 'project-autofill') {
+            isValid = parsedData.title && parsedData.description;
+          } else if (mode === 'experience-autofill') {
+            isValid = parsedData.company && parsedData.position;
+          }
+          
+          if (isValid) {
+            if (mode === 'project-autofill' && onProjectDataGenerated) {
+              console.log('Calling onProjectDataGenerated with:', parsedData);
+              onProjectDataGenerated(parsedData);
               console.log('onProjectDataGenerated called successfully');
+            } else if (mode === 'experience-autofill' && onExperienceDataGenerated) {
+              console.log('Calling onExperienceDataGenerated with:', parsedData);
+              onExperienceDataGenerated(parsedData);
+              console.log('onExperienceDataGenerated called successfully');
             }
           } else {
-            throw new Error('Missing required fields: title or description');
+            const requiredFields = mode === 'project-autofill' ? 'title or description' : 'company or position';
+            throw new Error(`Missing required fields: ${requiredFields}`);
           }
         } catch (parseError) {
           // If JSON parsing fails, treat as regular summary
-          console.error('Failed to parse project data as JSON:', parseError);
+          console.error('Failed to parse data as JSON:', parseError);
           console.error('Original result:', result);
           console.error('Raw response:', result);
           alert('AI response tidak dalam format JSON yang valid. Silakan coba lagi.');

@@ -104,15 +104,36 @@ export const usePortfolioAdmin = () => {
 
   const updateExperience = (index: number, field: string, value: any) => {
     if (!portfolioData) return;
+    
+    console.log('updateExperience called with:', { index, field, value });
+    console.log('Current portfolioData.experience:', portfolioData.experience);
+    
     const updatedExperience = [...portfolioData.experience];
-    updatedExperience[index] = {
-      ...updatedExperience[index],
-      [field]: value
-    };
-    setPortfolioData({
+    
+    if (field === 'batch_update') {
+      // Handle batch update - update multiple fields at once
+      console.log('Performing batch update with fields:', value);
+      updatedExperience[index] = {
+        ...updatedExperience[index],
+        ...value
+      };
+      console.log('Batch updated experience data:', updatedExperience[index]);
+    } else {
+      // Handle single field update
+      updatedExperience[index] = {
+        ...updatedExperience[index],
+        [field]: value
+      };
+      console.log('Single field updated experience data:', updatedExperience[index]);
+    }
+    
+    const newPortfolioData = {
       ...portfolioData,
       experience: updatedExperience
-    });
+    };
+    
+    console.log('New portfolio data:', newPortfolioData);
+    setPortfolioData(newPortfolioData);
   };
 
   const deleteExperience = (index: number) => {
