@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm';
 import AdminHeader from './components/AdminHeader';
 import Sidebar from './components/Sidebar';
 import ProfileForm from './components/ProfileForm';
+import AboutManager from './components/AboutManager';
 import ProjectsManager from './components/ProjectsManager';
 import ExperienceManager from './components/ExperienceManager';
 import SettingsPanel from './components/SettingsPanel';
@@ -46,6 +47,13 @@ const AdminPage = () => {
           <ProfileForm
             profile={portfolioData.profile}
             onUpdate={updateProfile}
+          />
+        );
+      case 'about':
+        return (
+          <AboutManager
+            about={portfolioData.about}
+            onUpdate={updateAbout}
           />
         );
       case 'projects':
