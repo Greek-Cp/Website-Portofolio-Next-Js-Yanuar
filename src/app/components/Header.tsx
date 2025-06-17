@@ -8,6 +8,7 @@ const Header = () => {
   const { data: portfolioData } = usePortfolioData();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,20 @@ const Header = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Listen for modal state changes
+  useEffect(() => {
+    const handleModalOpen = () => setIsModalOpen(true);
+    const handleModalClose = () => setIsModalOpen(false);
+
+    window.addEventListener('modalOpen', handleModalOpen);
+    window.addEventListener('modalClose', handleModalClose);
+
+    return () => {
+      window.removeEventListener('modalOpen', handleModalOpen);
+      window.removeEventListener('modalClose', handleModalClose);
+    };
   }, []);
 
   const navItems = [
@@ -36,6 +51,8 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'py-2' : 'py-4'
+    } ${
+      isModalOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
     }`}>
       <nav className={`mx-4 md:mx-8 transition-all duration-300 ${
         isMenuOpen ? 'rounded-2xl' : 'rounded-full'

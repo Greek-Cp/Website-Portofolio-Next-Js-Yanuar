@@ -54,6 +54,22 @@ const Projects = () => {
     }
   }, [selectedProject, currentImageIndex]);
 
+  // Add effect to prevent scrolling when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      // Disable scrolling on body when modal is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable scrolling when modal is closed
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      // Cleanup: ensure scrolling is re-enabled when component unmounts
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedProject]);
+
   // Now we can do conditional rendering after all hooks are declared
   if (loading || !portfolioData) {
     return (
@@ -73,11 +89,15 @@ const Projects = () => {
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0); // Reset to first image when opening modal
+    // Dispatch event to hide header
+    window.dispatchEvent(new Event('modalOpen'));
   };
 
   const handleCloseModal = () => {
     setSelectedProject(null);
     setCurrentImageIndex(0);
+    // Dispatch event to show header
+    window.dispatchEvent(new Event('modalClose'));
   };
 
   const nextImage = () => {
@@ -234,15 +254,18 @@ const Projects = () => {
 
                  {/* Project Showcase Modal */}
          {selectedProject && (
-           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate-fadeIn">
-             <div className="bg-gray-900 rounded-3xl p-8 max-w-4xl w-full mx-4 animate-slideUp max-h-[90vh] overflow-y-auto">
-              <div className="flex justify-between items-start mb-6">
+           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] animate-fadeIn pt-16" onClick={handleCloseModal}>
+             <div className="bg-gray-900 rounded-3xl p-8 max-w-4xl w-full mx-4 animate-slideUp max-h-[90vh] overflow-y-auto relative" onClick={(e) => e.stopPropagation()}>
+              <button 
+                onClick={handleCloseModal} 
+                className="absolute top-4 right-4 text-white/70 hover:text-white p-2 z-[9999] bg-gray-800 rounded-full"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="mb-6 mt-2">
                 <h3 className="text-2xl font-bold text-white">{selectedProject.title}</h3>
-                <button onClick={handleCloseModal} className="text-white/70 hover:text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
               </div>
                              {/* Image Slider */}
                <div className="mb-6">
@@ -380,4 +403,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
