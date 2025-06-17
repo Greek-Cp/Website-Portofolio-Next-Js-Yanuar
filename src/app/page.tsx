@@ -29,14 +29,14 @@ export default function Home() {
         }}
       />
 
-      {/* Global Glow Effects */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-80 h-80 bg-blue-500/15 rounded-full filter blur-[80px] animate-blob" />
-        <div className="absolute top-2/3 -right-1/4 w-80 h-80 bg-purple-500/15 rounded-full filter blur-[80px] animate-blob animation-delay-2000" />
-        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/15 rounded-full filter blur-[80px] animate-blob animation-delay-4000" />
-        <div className="absolute top-1/2 -left-1/3 w-96 h-96 bg-purple-500/10 rounded-full filter blur-[120px] animate-blob animation-delay-1000" />
-        <div className="absolute bottom-1/4 -right-1/3 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-[120px] animate-blob animation-delay-3000" />
-      </div>
+        {/* Global Glow Effects */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute top-1/4 -left-1/4 w-80 h-80 bg-blue-500/15 rounded-full filter blur-[80px] animate-blob" />
+          <div className="absolute top-2/3 -right-1/4 w-80 h-80 bg-purple-500/15 rounded-full filter blur-[80px] animate-blob animation-delay-2000" />
+          <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-80 h-80 bg-cyan-500/15 rounded-full filter blur-[80px] animate-blob animation-delay-4000" />
+          <div className="absolute top-1/2 -left-1/3 w-96 h-96 bg-purple-500/10 rounded-full filter blur-[120px] animate-blob animation-delay-1000" />
+          <div className="absolute bottom-1/4 -right-1/3 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-[120px] animate-blob animation-delay-3000" />
+        </div>
 
       {/* Content with relative positioning */}
       <div className="relative z-10">
