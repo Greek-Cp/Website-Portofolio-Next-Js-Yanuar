@@ -52,4 +52,4 @@ export async function POST(request: NextRequest) {
 // PUT - Same as POST for this use case
 export async function PUT(request: NextRequest) {
   return POST(request);
-} 
+}

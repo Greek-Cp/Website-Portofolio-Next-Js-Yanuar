@@ -132,7 +132,6 @@
       "icon": "Video",
       "color": "from-purple-400 to-pink-400",
       "images": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU",
         "https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png",
         "https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png"
       ],
@@ -161,7 +160,6 @@
       "icon": "Brain",
       "color": "from-blue-400 to-cyan-400",
       "images": [
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6zFsLxcAknwQGUcQ9mz1evQqWurxBPHD_v8UoWn91Qkn90CV9PeVwTGmkYgjvdO19Bc0&usqp=CAU",
         "https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png",
         "https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png"
       ],
@@ -230,6 +228,53 @@
         "Package Development"
       ],
       "status": "Open Source",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "SPKAIY (Ads Platform App, Cambodia)",
+      "description": "SPKAIY is a mobile application developed to assist Cambodian citizens in advertising products.",
+      "longDescription": "The SPKAIY app was developed using Flutter to provide a platform for advertising products in Cambodia, targeting local citizens. The application features QR code reading and generation, allowing users to create personalized store pages for their products. Throughout the development process, the team faced challenges such as retrieving product data from the server, which were successfully resolved to enhance user experience. Additionally, the user interface was improved by modifying the home page to include various product category components, making navigation easier for users.\n\nThe project involved extensive debugging and enhancement efforts, ensuring the application's overall stability and functionality. Developers actively identified and fixed bugs, contributing to a smoother user experience. The app not only serves as a marketplace platform but also focuses on empowering local vendors by providing them with tools to showcase their products effectively.\n\nSPKAIY is associated with Cambodia's largest free open market, bridging the gap between sellers and buyers in a digital environment. This initiative aims to foster economic growth by facilitating easier access to market opportunities for local entrepreneurs.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "https://media.licdn.com/dms/image/v2/D4D2DAQGvdy1Fnnk41Q/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1702531486881?e=1750780800&v=beta&t=X7jqHrA6h30p48LUP7pKl4k8PYQ4uR_Xtd-UXr6yPm4"
+      ],
+      "features": [
+        "QR Code reading and generation",
+        "User store pages",
+        "Product category components"
+      ],
+      "technologies": [
+        "Flutter",
+        "iOS Development",
+        "REST APIs"
+      ],
+      "status": "Completed",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "RE-FOOD",
+      "description": "A food ordering application that utilizes WhatsApp for seamless order placement.",
+      "longDescription": "RE-FOOD is a mobile application developed for the KMIPN V competition, specifically designed to facilitate food ordering through WhatsApp. The application allows users to place orders conveniently by reading notifications directly from their phones. This integration ensures a user-friendly experience and streamlines the ordering process.\n\nIn the development of RE-FOOD, we utilized Java as the primary programming language, which allowed us to create a robust application that meets the needs of users. The application is integrated with Firebase Realtime Database for efficient data storage and management, ensuring that orders are processed in real time.\n\nTo enhance user experience, we implemented a responsive design that guarantees the application's functionality across various mobile devices. This design consideration ensures that users can access the application on any device without compromising usability.\n\nOverall, RE-FOOD showcases our ability to merge technology with practical solutions, making it an innovative tool for food ordering in a competitive environment.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "https://media.licdn.com/dms/image/v2/D4D2DAQFeY1_M74un6Q/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1702532739639?e=1750780800&v=beta&t=uDstZSsiiCGzyfoTI8Een09XlVMZY7WlQdVy_4_C-4I"
+      ],
+      "features": [
+        "Food ordering via WhatsApp",
+        "Notification reading for order placement",
+        "Integration with Firebase Realtime Database",
+        "Responsive design for mobile devices"
+      ],
+      "technologies": [
+        "Java",
+        "Firebase",
+        "XML"
+      ],
+      "status": "Completed",
       "github": "#",
       "demo": "#"
     }

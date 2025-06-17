@@ -147,15 +147,36 @@ export const usePortfolioAdmin = () => {
 
   const updateProject = (index: number, field: string, value: any) => {
     if (!portfolioData) return;
+    
+    console.log('updateProject called with:', { index, field, value });
+    console.log('Current portfolioData.projects:', portfolioData.projects);
+    
     const updatedProjects = [...portfolioData.projects];
-    updatedProjects[index] = {
-      ...updatedProjects[index],
-      [field]: value
-    };
-    setPortfolioData({
+    
+    if (field === 'batch_update') {
+      // Handle batch update - update multiple fields at once
+      console.log('Performing batch update with fields:', value);
+      updatedProjects[index] = {
+        ...updatedProjects[index],
+        ...value
+      };
+      console.log('Batch updated project data:', updatedProjects[index]);
+    } else {
+      // Handle single field update
+      updatedProjects[index] = {
+        ...updatedProjects[index],
+        [field]: value
+      };
+      console.log('Single field updated project data:', updatedProjects[index]);
+    }
+    
+    const newPortfolioData = {
       ...portfolioData,
       projects: updatedProjects
-    });
+    };
+    
+    console.log('New portfolio data:', newPortfolioData);
+    setPortfolioData(newPortfolioData);
   };
 
   const deleteProject = (index: number) => {
