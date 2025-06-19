@@ -149,179 +149,269 @@
   ],
   "projects": [
     {
-      "title": "VIDCAP - Mobile App",
-      "description": "A Flutter-based video editing application focused on subtitle overlay and animation, inspired by CapCut's functionality.",
-      "longDescription": "Developed a comprehensive video editing application using Flutter, allowing users to add subtitle overlays and animated subtitles on videos, similar to CapCut.",
-      "icon": "Video",
-      "color": "from-purple-400 to-pink-400",
+      "title": "Al-Quran-Ku Flutter Mobile",
+      "description": "Al-Quran-Ku is a user-friendly mobile application designed to facilitate an immersive Quran reading experience.",
+      "longDescription": "Al-Quran-Ku is a user-friendly mobile application developed using Flutter, designed to facilitate an immersive Quran reading experience. The app features the complete Quran text, offering users the ability to read at their own pace. A notable aspect of Al-Quran-Ku is its selection of four esteemed Qaris, allowing users to choose their preferred reciter for a more personalized experience. Additionally, the app provides comprehensive translations of verses, coupled with transliterations in Latin script, catering to a wide range of users regardless of their Arabic proficiency. With its intuitive design and comprehensive features, Al-Quran-Ku is an ideal companion for anyone seeking to engage with the Quran's teachings.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
       "images": [
-        "https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png",
-        "https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png"
+        "/uploads/1750348056545-rp25fyx6eug.png"
       ],
       "features": [
-        "Built a native iOS library using AVFoundation to export videos with animated subtitles",
-        "Created a native Android library using Media3 to render subtitle overlays directly on videos",
-        "Integrated OpenAI's transcription API to automatically convert video audio into subtitles",
-        "Cross-platform compatibility for Android and iOS"
+        "Complete Quran Text Reading",
+        "Choice of Four Qaris for Recitations",
+        "Translations of Quranic Verses",
+        "Latin Script Transliterations",
+        "Intuitive, User-Friendly Interface",
+        "Developed Using Flutter for Smooth Performance"
       ],
       "technologies": [
         "Flutter",
-        "Dart",
-        "AVFoundation",
-        "Media3",
-        "OpenAI API",
-        "Video Processing"
+        "Android",
+        "iOS"
+      ],
+      "status": "Open Source",
+      "github": "https://github.com/Greek-Cp",
+      "demo": "#"
+    },
+    {
+      "title": "Spkaiy App Mobile Flutter",
+      "description": "Spkaiy is an application tailored to empower the Cambodian community by facilitating their entry into the marketplace.",
+      "longDescription": "My role in the development of Spkaiy involved implementing a QR code reading feature, enhancing the app's layout, integrating a store feature, and revamping the home screen to include various categories. These contributions have been pivotal in making Spkaiy a user-friendly platform for Cambodians to effectively advertise and sell their products. The application focuses on providing a seamless experience for users, ensuring they can easily navigate through categories and utilize the store feature. The QR code functionality adds a modern touch, allowing for quick access to information and products.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750348240390-nhhbj6wyfv.png"
+      ],
+      "features": [
+        "Implemented QR code reading feature",
+        "Improved app layout for enhanced user experience",
+        "Implemented store feature within the app",
+        "Enhanced home screen appearance by adding various categories"
+      ],
+      "technologies": [
+        "Flutter",
+        "Responsive Design",
+        "Mobile Development"
+      ],
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp",
+      "demo": "https://github.com/Greek-Cp"
+    },
+    {
+      "title": "Books Reads AI Flutter Mobile",
+      "description": "An innovative application crafted for story enthusiasts and creators, blending storytelling and technology.",
+      "longDescription": "Books Reads AI Flutter Mobile is an innovative application crafted for story enthusiasts and creators. Developed using Flutter, it offers a unique blend of storytelling and technology. Users can write their own stories and, leveraging the power of AI, the app automatically generates accompanying images, bringing narratives to life visually. This app is perfect for those who wish to see their imagination vividly illustrated, making it a groundbreaking tool in digital storytelling. The project includes the implementation of responsive design to ensure adaptability across various devices, alongside the application of Clean Architecture principles for efficient coding. By integrating Vertex AI and Open AI APIs, the app provides a seamless story generation experience, enhancing user engagement and creativity.",
+      "icon": "Smartphone",
+      "color": "from-green-400 to-emerald-400",
+      "images": [
+        "/uploads/1750348384658-sf5jw5sxo4o.png"
+      ],
+      "features": [
+        "User story writing",
+        "AI-generated images",
+        "Responsive design"
+      ],
+      "technologies": [
+        "Flutter",
+        "Vertex AI",
+        "Open AI API"
+      ],
+      "status": "Completed",
+      "github": "https://bookrea.com/",
+      "demo": "https://play.google.com/store/apps/details?id=com.bookrea.story"
+    },
+    {
+      "title": "Studyo Tutors Apps Flutter Mobile",
+      "description": "Studyo Tutors Apps is an innovative learning platform that combines the engaging format of TikTok with educational content.",
+      "longDescription": "This app is designed to make learning interactive and fun, focusing on short-form video tutorials that cater to a wide range of educational topics. Its intuitive interface, inspired by popular social media formats, makes it easy for users to navigate and absorb information effectively. Studyo Tutors is ideal for learners who seek a modern, dynamic approach to education, blending entertainment with knowledge.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750348565232-0hco6pfnb3o.png"
+      ],
+      "features": [
+        "Short-form video tutorials",
+        "Interactive learning experience",
+        "User-friendly interface"
+      ],
+      "technologies": [
+        "Flutter",
+        "Firebase Firestore",
+        "Cloud Storage",
+        "API Integration"
       ],
       "status": "In Development",
       "github": "#",
       "demo": "#"
     },
     {
-      "title": "Bookread AI",
-      "description": "A Flutter-based AI storytelling app that creates personalized stories using Generative AI technology.",
-      "longDescription": "Story creation platform powered by Generative AI, developed during my time at Studyo.io, focusing on interactive storytelling experiences.",
-      "icon": "Brain",
+      "title": "Dating App Mobile Flutter",
+      "description": "Dating Mobile is a custom-built application designed to showcase proficiency in Flutter development.",
+      "longDescription": "This app offers a platform for users to connect, explore, and engage with potential matches. With a clean and user-friendly interface, it simplifies the process of finding and interacting with new people. The app incorporates essential dating app features such as profile creation, search filters, and secure messaging, all while showcasing the capability to create a fully functional, robust application using Flutter. Dating Mobile stands as both a practical dating tool and a personal milestone in the Flutter development journey.",
+      "icon": "Smartphone",
       "color": "from-blue-400 to-cyan-400",
       "images": [
-        "https://cdn.prod.website-files.com/678a08d17a6b88bae4e2d8ee/67931a046ea5a2c70aa2c4c2_66b0929089fba41bd4d2482e_UI-Design.png",
-        "https://miro.medium.com/v2/resize:fit:1400/1*JMKDG4QpDajGu430ksYWHg.png"
+        "/uploads/1750348683787-kgqnsw7h5an.png"
       ],
       "features": [
-        "AI-powered story generation using advanced language models",
-        "Personalized storytelling based on user preferences",
-        "Interactive reading experience with dynamic content",
-        "Firebase integration for user data and story storage"
-      ],
-      "technologies": [
-        "Flutter",
-        "Generative AI",
-        "Firebase",
-        "Cloud Functions",
-        "Natural Language Processing"
-      ],
-      "status": "Completed",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "title": "Educational Math Game",
-      "description": "An engaging gamified learning application for elementary school students focusing on mathematics education.",
-      "longDescription": "Developed as part of team collaboration at Studyo.io, this application provides interactive math learning experiences for young students.",
-      "icon": "PlayCircle",
-      "color": "from-green-400 to-emerald-400",
-      "images": [
-        "https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Night-Hiking-App.jpg"
-      ],
-      "features": [
-        "Gamified learning experiences for elementary students",
-        "Interactive math problems and challenges",
-        "Progress tracking and achievement system",
-        "Child-friendly user interface design"
+        "Profile creation",
+        "Search filters",
+        "Secure messaging"
       ],
       "technologies": [
         "Flutter",
         "Dart",
-        "Firebase",
-        "Game Development",
-        "UI/UX Design"
+        "Clean Architecture"
       ],
       "status": "Completed",
-      "github": "#",
-      "demo": "#"
+      "github": "https://github.com/Greek-Cp/dating_app",
+      "demo": "https://github.com/Greek-Cp/dating_app"
     },
     {
-      "title": "Easy Custom Animation Library",
-      "description": "Internal library developed to help development teams implement consistent, reusable animations efficiently.",
-      "longDescription": "Created to streamline animation development across multiple projects, providing a standardized set of animation components.",
-      "icon": "Smartphone",
-      "color": "from-orange-400 to-red-400",
-      "images": [
-        "https://assets.hongkiat.com/uploads/dark-mobile-app-ui/Task-Manager-Mobile-Concept.jpg"
-      ],
-      "features": [
-        "Reusable animation components for Flutter",
-        "Consistent animation patterns across projects",
-        "Easy integration and customization",
-        "Performance optimized animations"
-      ],
-      "technologies": [
-        "Flutter",
-        "Dart",
-        "Animation API",
-        "Package Development"
-      ],
-      "status": "Open Source",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "title": "SPKAIY (Ads Platform App, Cambodia)",
-      "description": "SPKAIY is a mobile application developed to assist Cambodian citizens in advertising products.",
-      "longDescription": "The SPKAIY app was developed using Flutter to provide a platform for advertising products in Cambodia, targeting local citizens. The application features QR code reading and generation, allowing users to create personalized store pages for their products. Throughout the development process, the team faced challenges such as retrieving product data from the server, which were successfully resolved to enhance user experience. Additionally, the user interface was improved by modifying the home page to include various product category components, making navigation easier for users.\n\nThe project involved extensive debugging and enhancement efforts, ensuring the application's overall stability and functionality. Developers actively identified and fixed bugs, contributing to a smoother user experience. The app not only serves as a marketplace platform but also focuses on empowering local vendors by providing them with tools to showcase their products effectively.\n\nSPKAIY is associated with Cambodia's largest free open market, bridging the gap between sellers and buyers in a digital environment. This initiative aims to foster economic growth by facilitating easier access to market opportunities for local entrepreneurs.",
+      "title": "E-Parent Control Mobile Native",
+      "description": "E-Parenting Control is a comprehensive application designed for parents to monitor and manage their children's digital activities.",
+      "longDescription": "E-Parenting Control provides real-time insights into app usage, internet browsing, and social media interaction, ensuring children's online experiences are safe and age-appropriate. The app includes features for setting screen time limits, blocking unsuitable content, and tracking location for safety. E-Parenting Control is an essential tool for modern parents who want to balance the benefits of digital access with the importance of maintaining a safe and healthy online environment for their children. The application design has been implemented with a focus on user experience and functionality, making it easy for parents to navigate and utilize its features effectively.",
       "icon": "Smartphone",
       "color": "from-blue-400 to-cyan-400",
       "images": [
-        "https://media.licdn.com/dms/image/v2/D4D2DAQGvdy1Fnnk41Q/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1702531486881?e=1750780800&v=beta&t=X7jqHrA6h30p48LUP7pKl4k8PYQ4uR_Xtd-UXr6yPm4"
+        "/uploads/1750348835553-a86eahllq88.png"
       ],
       "features": [
-        "QR Code reading and generation",
-        "User store pages",
-        "Product category components"
-      ],
-      "technologies": [
-        "Flutter",
-        "iOS Development",
-        "REST APIs"
-      ],
-      "status": "Completed",
-      "github": "#",
-      "demo": "#"
-    },
-    {
-      "title": "RE-FOOD",
-      "description": "A food ordering application that utilizes WhatsApp for seamless order placement.",
-      "longDescription": "RE-FOOD is a mobile application developed for the KMIPN V competition, specifically designed to facilitate food ordering through WhatsApp. The application allows users to place orders conveniently by reading notifications directly from their phones. This integration ensures a user-friendly experience and streamlines the ordering process.\n\nIn the development of RE-FOOD, we utilized Java as the primary programming language, which allowed us to create a robust application that meets the needs of users. The application is integrated with Firebase Realtime Database for efficient data storage and management, ensuring that orders are processed in real time.\n\nTo enhance user experience, we implemented a responsive design that guarantees the application's functionality across various mobile devices. This design consideration ensures that users can access the application on any device without compromising usability.\n\nOverall, RE-FOOD showcases our ability to merge technology with practical solutions, making it an innovative tool for food ordering in a competitive environment.",
-      "icon": "Smartphone",
-      "color": "from-blue-400 to-cyan-400",
-      "images": [
-        "https://media.licdn.com/dms/image/v2/D4D2DAQFeY1_M74un6Q/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1702532739639?e=1750780800&v=beta&t=uDstZSsiiCGzyfoTI8Een09XlVMZY7WlQdVy_4_C-4I"
-      ],
-      "features": [
-        "Food ordering via WhatsApp",
-        "Notification reading for order placement",
-        "Integration with Firebase Realtime Database",
-        "Responsive design for mobile devices"
+        "Real-time insights into app usage",
+        "Setting screen time limits",
+        "Blocking unsuitable content",
+        "Tracking location for safety"
       ],
       "technologies": [
         "Java",
-        "Firebase",
-        "XML"
+        "Retrofit",
+        "View Binding",
+        "Clean Architecture"
       ],
       "status": "Completed",
       "github": "#",
       "demo": "#"
     },
     {
-      "title": "DESA SIDOKARE- Mobile App",
-      "description": "A mobile application developed to assist the staff of Desa Sidokare in providing services to residents.",
-      "longDescription": "The 'Desa Sidokare' application was developed using Flutter with the objective of facilitating better service delivery to the residents of Desa Sidokare. The application aims to streamline the access of residents to various services offered by the village staff, ensuring that residents can easily find and utilize the services they need. Additionally, the design of the application was meticulously implemented to guarantee responsiveness and compatibility across all types of mobile devices. This ensures that all users, regardless of their device, have an optimal experience when using the application.\n\nThe development process involved careful planning and execution, focusing on user needs and the types of services that the village provides. By leveraging modern technology and user-friendly design, the application enhances the interaction between residents and village staff. Furthermore, this initiative is part of a broader effort to digitize public services and make them more accessible to the community.\n\nIn addition to improving service access, the application serves as a platform for residents to engage with their local government, providing feedback and suggestions for further improvements. The project was developed in collaboration with Politeknik Negeri Jember, ensuring that technical expertise and academic support were integrated into the development process. Overall, the 'Desa Sidokare' application represents a significant step towards modernizing local governance and enhancing community engagement.",
+      "title": "E-RT Mobile Native",
+      "description": "E-RT Mobile Apps is a versatile application designed to streamline administrative tasks for local community leaders.",
+      "longDescription": "E-RT Mobile Apps simplifies the management of correspondence, keeping everything organised and accessible. Additionally, residents within the community can stay updated on local events and activities. The app also includes a feature for reporting incidents, ensuring a quick response to community issues. Moreover, it offers a transparent view of the community's finances, allowing for efficient monitoring of cash flow. This app is an essential tool for enhancing community engagement and management.",
       "icon": "Smartphone",
       "color": "from-blue-400 to-cyan-400",
-      "images": [],
+      "images": [
+        "/uploads/1750348949445-c53j244lpt.png"
+      ],
       "features": [
-        "Service Access",
-        "User Feedback",
-        "Responsive Design"
+        "Streamlined management of correspondence",
+        "Updates on local events and activities",
+        "Incident reporting feature",
+        "Transparent view of community finances"
+      ],
+      "technologies": [
+        "Kotlin",
+        "Retrofit",
+        "Data Binding",
+        "Clean Architecture"
+      ],
+      "status": "Completed",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "Sidokare Apps Flutter Mobile",
+      "description": "Desa SidoKare app is a tailored solution designed to streamline the operations and services of the village employees in SidoKare.",
+      "longDescription": "This application simplifies various administrative tasks, enhancing the efficiency of service delivery to the community. Additionally, it serves as a vital tool for residents, providing them with the ability to easily access and monitor local news and updates. By bridging the gap between village officials and the community, the Desa SidoKare app plays a crucial role in fostering transparent and effective communication, thus improving the overall quality of village governance and resident engagement.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750349039045-egqb9ec6lve.png"
+      ],
+      "features": [
+        "Streamlined operations for village employees",
+        "Access to local news and updates for residents",
+        "Enhanced service delivery efficiency"
       ],
       "technologies": [
         "Flutter",
-        "Laravel",
-        "MySQL",
-        "PHP"
+        "Laravel API",
+        "Clean Architecture"
       ],
-      "status": "In Development",
-      "github": "#",
-      "demo": "#"
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp/sidokare_mobile_app",
+      "demo": "https://github.com/Greek-Cp/sidokare_mobile_app"
+    },
+    {
+      "title": "BARITA Mobile Native",
+      "description": "Bacarita is an application for reading news equipped with a news bookmark feature.",
+      "longDescription": "Bacarita is an application designed for reading news that allows users to bookmark articles for later reading. Users can also track the number of news articles they have read and share them on various platforms such as WhatsApp and Facebook. This application was developed as a coding submission to showcase my skills in Android development. The application is built using Kotlin and follows clean architecture principles for better organization and maintainability of the codebase.\n\nThe app integrates a REST API using Retrofit, which allows for seamless data fetching and management. To simplify UI management, View Binding has been employed, providing a more efficient way to interact with views in the application. The design is responsive, ensuring an optimal user experience across a variety of devices, making it accessible to a wider audience.\n\nOverall, the project highlights my ability to develop a feature-rich mobile application while adhering to best practices in software development. The focus on clean architecture and responsive design reflects a commitment to delivering high-quality software that meets user needs and expectations.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750349172457-f2l9flms4g.png"
+      ],
+      "features": [
+        "News bookmark feature",
+        "Track number of news read",
+        "Share news on social media"
+      ],
+      "technologies": [
+        "Kotlin",
+        "Retrofit",
+        "View Binding"
+      ],
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp/BaritaBacaBerita2",
+      "demo": "https://github.com/Greek-Cp/BaritaBacaBerita2"
+    },
+    {
+      "title": "AG-FOOD Mobile Native",
+      "description": "AG-FOOD is a streamlined application designed to assist small and medium-sized food businesses (UMKM) in enhancing their sales.",
+      "longDescription": "AG-FOOD is a mobile application that provides an easy-to-use platform for small and medium-sized food businesses to showcase and sell their food products. The application not only facilitates sales for these businesses but also offers customers a convenient online ordering system. Users can effortlessly browse and purchase their desired food items, bridging the gap between local food vendors and their customers.\n\nThe application has been designed with a focus on user experience, ensuring that both vendors and customers can navigate the platform with ease. AG-FOOD integrates a REST API using Retrofit in Java, allowing for seamless data handling and communication between the application and the backend services. This integration is crucial for real-time updates on product availability and order status.\n\nIn terms of development practices, Clean Architecture has been applied to maintain a structured and maintainable codebase. This approach allows for easier testing and future enhancements, which is vital for the application's longevity. Additionally, using View Binding has improved UI management, making it more efficient and reducing the likelihood of errors in layout handling.\n\nThe responsive design ensures optimal user experience across various devices, catering to a wide audience. Overall, AG-FOOD stands as a significant tool for enhancing the sales and visibility of small and medium-sized food businesses in the digital marketplace.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750349291944-8lo7822r37m.png"
+      ],
+      "features": [
+        "Easy-to-use platform for food businesses",
+        "Convenient online ordering system for customers",
+        "Seamless online transactions between vendors and customers"
+      ],
+      "technologies": [
+        "Java",
+        "Retrofit",
+        "View Binding",
+        "Clean Architecture"
+      ],
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp/Ag_food",
+      "demo": "https://github.com/Greek-Cp/Ag_food"
+    },
+    {
+      "title": "Al-Quranku",
+      "description": "Quranku is a digital Qur’an app built with Flutter and dedicated to the Muslim Ummah.",
+      "longDescription": "At the end of this blessed month of Ramadan, Alhamdulillah… I’m proud to present Quranku, a digital Qur’an app built with Flutter and dedicated to the Muslim Ummah. Quranku is designed to help Muslims stay connected with the Qur’an anytime, anywhere. This app offers a minimalist and eye-friendly design, making it easier for users to read and engage with the Qur'an. I hope this app brings benefit, and I truly welcome any feedback from you all!",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750349546252-gnga9fece29.png"
+      ],
+      "features": [
+        "Full access to all 114 surahs",
+        "Details on place of revelation & number of verses",
+        "Save and resume your last reading",
+        "Choose your favorite Qari for beautiful recitations",
+        "Complete translation & tafsir",
+        "Minimalist, eye-friendly design",
+        "Offline listening feature — no internet required"
+      ],
+      "technologies": [
+        "Flutter"
+      ],
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp/Al-Quran-Ku-Flutter",
+      "demo": "https://github.com/Greek-Cp/Al-Quran-Ku-Flutter"
     }
   ],
   "technologies": [

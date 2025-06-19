@@ -257,3 +257,34 @@ body::before {
   border: 1px solid rgba(59, 130, 246, 0.3);
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
 }
+
+/* Background Page Animations */
+@keyframes backgroundShift {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(1deg) scale(1.02); }
+  50% { transform: rotate(0deg) scale(1.05); }
+  75% { transform: rotate(-1deg) scale(1.02); }
+}
+
+@keyframes floatCustom {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1deg); }
+  50% { transform: translateY(-20px) rotate(0deg); }
+  75% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+.animate-float {
+  animation: floatCustom 6s ease-in-out infinite;
+}
+
+.animate-background-shift {
+  animation: backgroundShift 8s ease-in-out infinite;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
+}

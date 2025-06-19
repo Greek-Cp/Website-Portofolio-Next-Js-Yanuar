@@ -6,8 +6,10 @@ import PortfolioAbout from './components/PortfolioAbout';
 import PortfolioExperience from './components/PortfolioExperience';
 import PortfolioProjects from './components/PortfolioProjects';
 import PortfolioContact from './components/PortfolioContact';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
 const PortfolioPage = () => {
+  const { data: portfolioData, loading } = usePortfolioData();
   return (
     <div className="portfolio-print-layout">
       {/* Print Styles */}
@@ -158,25 +160,12 @@ const PortfolioPage = () => {
         <PortfolioExperience />
       </div>
       
-      {/* Slide 4: Project 1 */}
-      <div className="portfolio-slide">
-        <PortfolioProjects projectIndex={0} />
-      </div>
-      
-      {/* Slide 5: Project 2 */}
-      <div className="portfolio-slide">
-        <PortfolioProjects projectIndex={1} />
-      </div>
-      
-      {/* Slide 6: Project 3 */}
-      <div className="portfolio-slide">
-        <PortfolioProjects projectIndex={2} />
-      </div>
-      
-      {/* Slide 7: Project 4 */}
-      <div className="portfolio-slide">
-        <PortfolioProjects projectIndex={3} />
-      </div>
+      {/* Dynamic Project Slides */}
+      {portfolioData?.projects.map((_, index) => (
+        <div key={`project-${index}`} className="portfolio-slide">
+          <PortfolioProjects projectIndex={index} />
+        </div>
+      ))}
       
       {/* Slide 8: Contact */}
       <div className="portfolio-slide">
@@ -187,15 +176,15 @@ const PortfolioPage = () => {
       
       {/* Navigation Dots */}
       <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 flex space-x-2">
-        {[
+        {portfolioData && [
           { id: 1, title: 'Hero' },
           { id: 2, title: 'About' },
           { id: 3, title: 'Experience' },
-          { id: 4, title: 'Project 1' },
-          { id: 5, title: 'Project 2' },
-          { id: 6, title: 'Project 3' },
-          { id: 7, title: 'Project 4' },
-          { id: 8, title: 'Contact' }
+          ...portfolioData.projects.map((project, index) => ({
+            id: 4 + index,
+            title: project.title
+          })),
+          { id: 4 + portfolioData.projects.length, title: 'Contact' }
         ].map((slide) => (
           <button
             key={slide.id}

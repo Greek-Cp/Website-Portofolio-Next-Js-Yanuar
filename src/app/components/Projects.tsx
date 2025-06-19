@@ -166,7 +166,7 @@ const Projects = () => {
             <div key={index} className="glass-hover rounded-3xl p-8 group cursor-pointer" onClick={() => handleProjectClick(project)}>
                              {/* Project Image */}
                <div className="mb-6 relative overflow-hidden rounded-xl">
-                 <img src={project.images[0]} alt={project.title} className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105" />
+                 <img src={project.images[0]} alt={project.title} className="w-full h-80 object-cover transition-transform duration-300 hover:scale-105" />
                  {project.images.length > 1 && (
                    <div className="absolute top-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full">
                      +{project.images.length - 1} more
