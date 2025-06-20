@@ -71,30 +71,56 @@
   "experience": [
     {
       "company": "Studyo.io",
-      "position": "Android Developer",
-      "location": "London, United Kingdom",
-      "period": "08/2023 - Present",
+      "position": "Android Developer Full Time",
+      "location": "Remote, Surabaya, Indonesia",
+      "period": "Jan 2023 – Mar 2023",
       "type": "Full-time Remote",
       "responsibilities": [
-        "Developing cross-platform mobile applications for Android and iOS using Flutter.",
-        "Building the Bookread AI application, a story creation platform powered by Generative AI.",
-        "Integrating Firebase Firestore, Authentication, and Cloud Storage to enhance app performance and scalability.",
-        "Handling the deployment process to both Google Play Store and Apple App Store.",
-        "Creating and maintaining internal libraries to improve code reuse and streamline development across projects.",
-        "Developed an Easy Custom Animation library to help the team implement consistent, reusable animations efficiently.",
-        "Supporting team collaboration by managing tasks, conducting code reviews, and ensuring clean, maintainable codebases.",
-        "Assisting in the development of an educational math game application for elementary school students, focusing on engaging, gamified learning experiences.",
-        "Creating an internal Bluetooth library (BLE and Classic) in Flutter to support CAT 58mm thermal printers and other thermal printers not compatible with existing pub.dev libraries.",
-        "Creating an internal audio library to help the team easily add background music per page and sound effects per game, improving audio consistency and speeding up integration across projects."
+        "Developing cross-platform mobile applications for Android and iOS using Flutter",
+        "Building the Bookread AI application, a story creation platform powered by Generative AI",
+        "Integrating Firebase Firestore, Authentication, and Cloud Storage to enhance app performance and scalability",
+        "Handling the deployment process to both Google Play Store and Apple App Store",
+        "Creating and maintaining internal libraries to improve code reuse and streamline development across projects",
+        "Developed an Easy Custom Animation library to help the team implement consistent, reusable animations efficiently",
+        "Supporting team collaboration by managing tasks, conducting code reviews, and ensuring clean, maintainable codebases",
+        "Assisting in the development of an educational math game application for elementary school students, focusing on engaging, gamified learning experiences"
       ],
       "technologies": [
         "Flutter",
-        "Firebase Firestore",
-        "Firebase Authentication",
-        "Firebase Cloud Storage",
-        "Google Play Store",
-        "Apple App Store",
-        "Bluetooth (BLE and Classic)"
+        "Dart",
+        "Firebase",
+        "Android",
+        "iOS",
+        "AI Integration",
+        "Cloud Storage",
+        "Animation"
+      ]
+    },
+    {
+      "company": "Ngawi",
+      "position": "Omaigad",
+      "location": "Florida",
+      "period": "2026-2039",
+      "type": "Full Time",
+      "responsibilities": [
+        "Developing cross-platform mobile applications for Android and iOS using Flutter",
+        "Building the Bookread AI application, a story creation platform powered by Generative AI"
+      ],
+      "technologies": [
+        "Flutter"
+      ]
+    },
+    {
+      "company": "Ontario Tec",
+      "position": "Lead",
+      "location": "Cannada",
+      "period": "2024",
+      "type": "Full Time",
+      "responsibilities": [
+        "NGawi"
+      ],
+      "technologies": [
+        "Flutter"
       ]
     },
     {
@@ -108,66 +134,16 @@
         "Setting up the initial project architecture and developing core components for a Student Inventory Management application",
         "Implementing full CRUD functionality for inventory data",
         "Assisting team members by debugging issues and providing technical support during development",
-        "Configuring app permissions, such as camera access, using the Info.plist file",
+        "Configuring app permissions using the Info.plist file",
         "Performing real device testing to ensure smooth performance on iOS hardware",
         "Collaborating within a cross-functional team and contributing to agile development cycles"
       ],
       "technologies": [
         "SwiftUI",
-        "Challenge-Based Learning (CBL)"
-      ]
-    },
-    {
-      "company": "Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
-      "position": "ANDROID DEVELOPER",
-      "location": "Jakarta, Indonesia",
-      "period": "02/2024 – 07/2024",
-      "type": "Internship",
-      "responsibilities": [
-        "Developed CeritaKita, a mental health support mobile application for adolescents to manage emotional challenges in a safe, personalized digital space.",
-        "Collaborated with a cross-functional team of Machine Learning and Cloud Computing developers to build AI-powered features for early detection and personalized user interaction.",
-        "Implemented UI/UX and core functionalities using Flutter, ensuring smooth user experience and accessibility.",
-        "Tackled mental health stigma by creating a platform encouraging open expression, early intervention, and youth self-care.",
-        "Contributed to agile project planning, teamwork, and final product presentation as part of the Bangkit Capstone Project."
-      ],
-      "technologies": [
-        "Flutter",
-        "Machine Learning",
-        "Cloud Computing"
-      ]
-    },
-    {
-      "company": "Spkaiy (Cambodia Largest Free Open Market)",
-      "position": "Android Developer",
-      "location": "Sydney, New South Wales, Australia",
-      "period": "Mar 2023 - Jun 2023",
-      "type": "Part-time",
-      "responsibilities": [
-        "Implementing new features in existing applications as per the guidance of the project manager.",
-        "Integrated REST APIs with the application.",
-        "Developed the store owner's page, including features for creating and scanning QR codes.",
-        "Assisted the team in resolving bugs and provided recommendations for bug management.",
-        "Contribute to deployment process of the application on both Google Play Store and Apple App Store, ensuring smooth rollout and availability."
-      ],
-      "technologies": [
-        "Android Development",
-        "Flutter",
-        "REST APIs"
-      ]
-    },
-    {
-      "company": "ARTASK Media",
-      "position": "Android Developer",
-      "location": "Surabaya, East Java, Indonesia",
-      "period": "Jan 2023 - Mar 2023",
-      "type": "Part-time",
-      "responsibilities": [
-        "Implementation a WebView application for camera monitoring, featuring token authentication and GET request integration.",
-        "Help the other developer to fixing the bug."
-      ],
-      "technologies": [
-        "Flutter",
-        "Native"
+        "iOS Development",
+        "Info.plist",
+        "CRUD operations",
+        "Agile Development"
       ]
     }
   ],
@@ -527,6 +503,31 @@
       ],
       "technologies": [
         "Flutter"
+      ],
+      "status": "Completed",
+      "github": "#",
+      "demo": "#"
+    },
+    {
+      "title": "Bibit Unggulan Nganjuk (BUN)",
+      "description": "An innovative mobile application designed to simplify the certification and management of premium fruit plant seeds.",
+      "longDescription": "BUN is a mobile application that focuses on the certification and management of premium fruit plant seeds. With features like QR code scanning and generation, it allows users to instantly access detailed information about each seed. The application streamlines the certification process, ensuring quality and authenticity in real-time. Users can also easily consult with the seed owners and place orders directly through the app.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750394520958-2kjkm7l9m3l.png"
+      ],
+      "features": [
+        "QR Code Scanning – Instantly access detailed information about each seed.",
+        "QR Code Generation – Easily create QR codes with certification data and origin details.",
+        "Automated Certification – Streamlines the seed certification process, ensuring quality and authenticity in real-time.",
+        "Contact the Owner – Directly consult with and order seeds from the source.",
+        "Share Information – Seamlessly share scan results via social media or messaging apps."
+      ],
+      "technologies": [
+        "Flutter",
+        "Firebase",
+        "Firestore"
       ],
       "status": "Completed",
       "github": "#",
