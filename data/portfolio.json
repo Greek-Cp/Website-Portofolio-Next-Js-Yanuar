@@ -155,15 +155,16 @@
       "icon": "Smartphone",
       "color": "from-blue-400 to-cyan-400",
       "images": [
-        "/uploads/1750348056545-rp25fyx6eug.png"
+        "/uploads/1750393733867-4rssppqm5d.png"
       ],
       "features": [
-        "Complete Quran Text Reading",
-        "Choice of Four Qaris for Recitations",
-        "Translations of Quranic Verses",
-        "Latin Script Transliterations",
-        "Intuitive, User-Friendly Interface",
-        "Developed Using Flutter for Smooth Performance"
+        "Full access to all 114 surahs",
+        "Details on place of revelation & number of verses",
+        "Save and resume your last reading",
+        "Choose your favorite Qari for beautiful recitations",
+        "Complete translation & tafsir",
+        "Minimalist, eye-friendly design",
+        "Offline listening feature — no internet required"
       ],
       "technologies": [
         "Flutter",
@@ -395,7 +396,7 @@
       "icon": "Smartphone",
       "color": "from-blue-400 to-cyan-400",
       "images": [
-        "/uploads/1750349546252-gnga9fece29.png"
+        "/uploads/1750393746863-kd0m21mkb9g.png"
       ],
       "features": [
         "Full access to all 114 surahs",
@@ -412,6 +413,100 @@
       "status": "Completed",
       "github": "https://github.com/Greek-Cp/Al-Quran-Ku-Flutter",
       "demo": "https://github.com/Greek-Cp/Al-Quran-Ku-Flutter"
+    },
+    {
+      "title": "Health Wise",
+      "description": "Cancer Detection Using a Cell Phone Camera.",
+      "longDescription": "Health Wise is an application developed as part of the requirements for the 'Learning to Apply Machine Learning for Android' course from Dicoding Indonesia. The app utilizes Kotlin and a TensorFlow Lite model to detect cancer using a cell phone camera. This innovative approach enables users to perform preliminary cancer screenings conveniently and efficiently.\n\nThroughout the development process, I gained a comprehensive understanding of fundamental Machine Learning concepts, including the implementation of ML Kit, MediaPipe, and Firebase Machine Learning. This knowledge was crucial in building a robust application that leverages the latest technologies to provide accurate results.\n\nMoreover, I delved deeper into advanced Android development topics such as Room for local database management, Dependency Injection for improved code structure, Clean Architecture for maintainability, and DataStore for data persistence. These skills significantly enhanced my ability to create efficient and scalable applications.\n\nAdditionally, I explored the potential of Generative AI in application development, which has broadened my perspective on building intelligent applications. This project not only solidified my understanding of Android development and Machine Learning but also prepared me for future challenges in the tech industry.",
+      "icon": "Smartphone",
+      "color": "from-green-400 to-emerald-400",
+      "images": [
+        "/uploads/1750393145039-k1y4n9vab5d.png"
+      ],
+      "features": [
+        "Cancer detection using cell phone camera",
+        "User-friendly interface",
+        "Data privacy and security"
+      ],
+      "technologies": [
+        "Kotlin",
+        "TensorFlow Lite",
+        "ML Kit"
+      ],
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp/HealtWiseApp",
+      "demo": "https://github.com/Greek-Cp/HealtWiseApp"
+    },
+    {
+      "title": "Edu Guide",
+      "description": "Edu Guide is an application that provides career or major recommendations based on the user's selected interests.",
+      "longDescription": "Edu Guide is designed to assist students in making informed decisions about their future careers or areas of study. The application employs a forward chaining algorithm, allowing users to select a set of facts that, when ordered correctly, form a rule. This rule is then used by the system to generate personalized recommendations for suitable majors or career paths. By integrating user interests with algorithmic processing, Edu Guide aims to streamline the decision-making process for students.\n\nThe application offers a user-friendly interface developed in Flutter, ensuring a seamless experience on mobile devices. Through Firebase, the application provides secure authentication and real-time database services, allowing users to save their preferences and receive recommendations instantly. The backend logic, implemented in Python, handles the complexities of the forward chaining algorithm, ensuring that the recommendations are both relevant and accurate.\n\nAdditionally, web-based components are supported through JavaScript, enabling broader accessibility and integration capabilities. This multi-faceted approach not only enhances the functionality of the application but also allows for future expansions and feature enhancements. Edu Guide stands as a comprehensive tool for students looking to explore their academic and career options effectively.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750393435315-d7pphrwm0om.png"
+      ],
+      "features": [
+        "Career recommendations based on user interests",
+        "Forward chaining algorithm for personalized suggestions",
+        "Real-time database services for instant updates"
+      ],
+      "technologies": [
+        "Flutter",
+        "Firebase",
+        "Python",
+        "JavaScript"
+      ],
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp/forward_chaining_man_app",
+      "demo": "https://github.com/Greek-Cp/forward_chaining_man_app"
+    },
+    {
+      "title": "QStory: Sharing Stories via Mobile Phone",
+      "description": "An application developed for sharing stories via mobile phone as part of the Intermediate Android Application Development course.",
+      "longDescription": "I am very happy to have achieved the latest certification: Intermediate Android Application Development from Dicoding Indonesia! As part of the requirements for graduating this class, I built an application, 'QStory: Sharing Stories via Mobile Phone'. I developed this app using Kotlin and various advanced features taught in the course. During my learning, I delved into concepts like Advanced UI, Animation, Localization & Accessibility, Services, Media, and Advanced Testing. I also implemented Geo Location features, Advanced Database, and Firebase integration in this application. This project is a graduation requirement of the 'Intermediate Android Application Development' course. During this process, I dug deeper into the importance of clean and efficient architecture, as well as good Dependency Injection techniques. The knowledge I gained not only strengthened my understanding of Android development, but also opened up my insight into how to build good and structured applications.",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750393903926-b5p7kpwgi2c.png"
+      ],
+      "features": [
+        "Advanced UI",
+        "Animation",
+        "Geo Location features",
+        "Advanced Database",
+        "Firebase integration"
+      ],
+      "technologies": [
+        "Kotlin",
+        "Firebase",
+        "Android"
+      ],
+      "status": "Completed",
+      "github": "https://github.com/Greek-Cp/QStory",
+      "demo": "https://github.com/Greek-Cp/QStory"
+    },
+    {
+      "title": "Pomotask",
+      "description": "Pomotask is an app that integrates the Pomodoro technique with AI-powered task planning to help users stay focused.",
+      "longDescription": "Pomotask is my latest portfolio project built with Flutter. This app integrates the Pomodoro technique with AI-powered task planning, helping users stay focused and manage their study or work sessions efficiently. Developed with Flutter, Pomotask delivers a smooth and responsive experience across devices.\n\nThe app features AI-powered task scheduling, allowing users to efficiently plan their tasks while maintaining productivity. With a Pomodoro timer for structured work sessions, users can optimize their time and stay engaged in their activities. Additionally, the app includes smart breaks to help users refresh and recharge, ensuring sustained productivity throughout their work sessions.\n\nPomotask is designed with a minimalist and intuitive interface, making it easy for users to navigate and utilize its features. As part of my portfolio, this project showcases my ability to build efficient, AI-driven, and user-friendly applications that cater to the needs of users looking to enhance their productivity. I am excited to share this project and would love to hear your thoughts!",
+      "icon": "Smartphone",
+      "color": "from-blue-400 to-cyan-400",
+      "images": [
+        "/uploads/1750394027317-wy34s1s70bl.png"
+      ],
+      "features": [
+        "AI-powered task scheduling",
+        "Pomodoro timer for structured work sessions",
+        "Smart breaks to maintain productivity",
+        "Minimalist & intuitive design"
+      ],
+      "technologies": [
+        "Flutter"
+      ],
+      "status": "Completed",
+      "github": "#",
+      "demo": "#"
     }
   ],
   "technologies": [
