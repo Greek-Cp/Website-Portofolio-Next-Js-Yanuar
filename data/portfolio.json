@@ -26,8 +26,8 @@
         "items": [
           "Flutter",
           "Android (Kotlin/Java)",
-          "iOS (Swift)",
-          "React Native"
+          "Swift UI",
+          "Jetpack Compose"
         ]
       },
       {
@@ -548,7 +548,7 @@
       "icon": "Smartphone"
     },
     {
-      "name": "React Native",
+      "name": "Jetpack Compose",
       "icon": "Code2"
     },
     {
